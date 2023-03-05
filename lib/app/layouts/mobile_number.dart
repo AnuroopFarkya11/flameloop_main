@@ -13,7 +13,7 @@ class GetMobile_Screen extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Color(0xff13131A),
       appBar: AppBar(
         backgroundColor: Colors.transparent,
       ),
@@ -39,18 +39,17 @@ class GetMobile_Screen extends GetView {
               style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15),
             ),
 
+            SizedBox(height: 13,),
+
             // Enter your mobile number
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 13),
-              child: Text(ContentStrings.getMobileScreenStr2,
-                  style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700)),
-            ),
+            Text(ContentStrings.getMobileScreenStr2,
+                style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700)),
 
             SizedBox(
-              height: 20,
+              height: 30,
             ),
 
             input_phone_number(),
@@ -66,10 +65,13 @@ class GetMobile_Screen extends GetView {
                   onPressed: () {
                     Get.toNamed(RoutePaths.enter_Otp);
                   },
-                  child: Text(
-                    "Get OTP",
-                    style: GoogleFonts.poppins(
-                        color: Colors.black, fontWeight: FontWeight.w500),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(vertical: 15),
+                    child: Text(
+                      "Get OTP",
+                      style: GoogleFonts.poppins(
+                          color: Colors.black, fontWeight: FontWeight.w500,fontSize: 18),
+                    ),
                   )),
             ),
 
