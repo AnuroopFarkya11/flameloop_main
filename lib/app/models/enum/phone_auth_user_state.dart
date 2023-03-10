@@ -1,0 +1,4 @@
+enum AuthUserState {
+  existingUser,
+  newUser,
+}

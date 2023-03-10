@@ -1,11 +1,22 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'controller/app_controller.dart';
+import 'app/services/firebase.dart';
+import 'app/services/storage.dart';
+import 'app/services/user.dart';
+import 'firebase_options.dart';
 
-void main() {
-  Get.put<AppController>(AppController());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+  Get.put<FirebaseFireStore>(FirebaseFireStore());
+  await Get.putAsync<StorageService>(() => StorageService().init());
+  Get.put<UserStore>(UserStore());
+
   runApp(const MyApp());
 }
 
@@ -24,7 +35,7 @@ class MyApp extends StatelessWidget {
           )
         )
       ),
-      initialRoute: RoutePaths.splah_screen,
+      initialRoute: RoutePaths.splashScreen,
       getPages: RouteClass.routes,
     );
   }

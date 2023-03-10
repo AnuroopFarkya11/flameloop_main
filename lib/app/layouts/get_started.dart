@@ -5,13 +5,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GetStarted_Screen extends GetView<AppController>{
-  const GetStarted_Screen({Key? key}) : super(key: key);
+class GetStarted extends GetView<AppController>{
+  const GetStarted({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff28282B),
+      backgroundColor: const Color(0xff28282B),
       body: SafeArea(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -37,16 +37,16 @@ class GetStarted_Screen extends GetView<AppController>{
               child: Text(
                 ContentStrings.getStartedstr2,
                 style:
-                    GoogleFonts.poppins(color: Color(0xffBDBCBC), fontSize: 15),
+                    GoogleFonts.poppins(color: const Color(0xffBDBCBC), fontSize: 15),
               ),
             ),
 
             //  Image
             Padding(
-                padding: EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(10.0),
                 child: Image.asset("assets/getstartedscreen/gettry.png")),
 
-            SizedBox(
+            const SizedBox(
               height: 50,
             ),
             // Padding(
@@ -60,9 +60,9 @@ class GetStarted_Screen extends GetView<AppController>{
         padding: const EdgeInsets.all(10.0),
         child: ElevatedButton(
           onPressed: () {
-            Get.toNamed(RoutePaths.get_Mobile);
+            Get.toNamed(RoutePaths.mobileAuthScreen);
           },
-          child: Text(
+          child: const Text(
             "Get Started",
             style: TextStyle(color: Colors.black),
           ),

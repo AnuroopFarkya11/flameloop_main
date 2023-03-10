@@ -1,11 +1,11 @@
 class RoutePaths {
 
 
-  static String splah_screen = '/Splash_Screen';
-  static String get_started = '/GetStarted_Screen';
-  static String get_Mobile = '/GetMObile_Screen';
-  static String enter_Otp = '/Enter_Otp_Screen';
-  static String setUp_profile = '/Set_Up_Profile';
-  static String select_interest= '/Select_Interest';
+  static String splashScreen = '/splashScreen';
+  static String getStarted = '/getStarted';
+  static String mobileAuthScreen = '/mobileAuthScreen';
+  static String otpVerificationScreen = '/otpVerificationScreen';
+  static String setUpProfile = '/setUpProfile';
+  static String selectInterest= '/SelectInterest';
 
 }

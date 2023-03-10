@@ -6,8 +6,8 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
-class Set_Up_Profile extends GetView {
-  const Set_Up_Profile({Key? key}) : super(key: key);
+class SetUpProfile extends GetView {
+  const SetUpProfile({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -143,7 +143,7 @@ class Set_Up_Profile extends GetView {
           padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
           child: ElevatedButton(
             onPressed: () {
-              Get.toNamed(RoutePaths.select_interest);
+              Get.toNamed(RoutePaths.selectInterest);
             },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 15),
