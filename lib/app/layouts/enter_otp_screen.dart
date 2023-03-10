@@ -40,16 +40,16 @@ class Enter_Otp_Screen extends GetView {
               ContentStrings.getOtpScreenStr1,
               style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15),
             ),
+            SizedBox(
+              height: 15,
+            ),
 
             // Enter your otp here
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 13),
-              child: Text(ContentStrings.getOtpScreenStr2,
-                  style: GoogleFonts.poppins(
-                      color: Colors.white,
-                      fontSize: 25,
-                      fontWeight: FontWeight.w700)),
-            ),
+            Text(ContentStrings.getOtpScreenStr2,
+                style: GoogleFonts.poppins(
+                    color: Colors.white,
+                    fontSize: 25,
+                    fontWeight: FontWeight.w700)),
 
             SizedBox(
               height: 20,
@@ -67,7 +67,7 @@ class Enter_Otp_Screen extends GetView {
               padding: const EdgeInsets.symmetric(vertical: 10),
               child: ElevatedButton(
                   onPressed: () {
-                    Get.toNamed(RoutePaths.enter_Otp);
+                    Get.toNamed(RoutePaths.setUp_profile);
                   },
                   child: Text(
                     "NEXT",

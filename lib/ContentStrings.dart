@@ -19,8 +19,12 @@ class ContentStrings{
   static String getOtpScreenStr3 = "Resend Code";
   static String getOtpScreenStr4 = "Didn't Receive the code yet?Click on resend in 0:20 sec ";
 
+  //CONTENT : SET UP PROFILE SCREEN
+  static String getSetUpProfileStr1 = "Yay! 😁";
+  static String getSetUpProfileStr2 = "Setup Your Flame Profile";
+  static String getSetUpProfileStr3 = "By clicking next you will agreeing our term and conditions";
 
-
-
+  //CONTENT: SELECT CATEGORIES
+  static String getSelectCatedoriesStr1 = "Search";
 
 }
