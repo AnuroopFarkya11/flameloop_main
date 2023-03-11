@@ -1,10 +1,10 @@
-import 'package:flameloop/app/screens/auth_screens/getx_helper/controller.dart';
+import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class InputPhoneNumber extends GetView<PhoneAuthController> {
+class InputPhoneNumber extends GetView<AuthController> {
   const InputPhoneNumber({Key? key}) : super(key: key);
 
   @override

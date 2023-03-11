@@ -2,9 +2,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../services/firebase.dart';
+import '../../../../services/firebase.dart';
 
-class PhoneAuthController extends GetxController {
+class AuthController extends GetxController {
   Rx<int> seconds = 60.obs;
   Rx<bool> isLoading = false.obs;
   TextEditingController phoneNumber = TextEditingController();

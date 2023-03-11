@@ -1,5 +1,5 @@
 import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
-import 'package:flameloop/app/screens/auth_screens/getx_helper/controller.dart';
+import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -10,7 +10,7 @@ import '../../Widgets/get_otp_textfield.dart';
 import '../../routes/route_path.dart';
 import '../../services/user.dart';
 
-class OtpVerificationScreen extends GetView<PhoneAuthController> {
+class OtpVerificationScreen extends GetView<AuthController> {
   const OtpVerificationScreen({Key? key}) : super(key: key);
 
   @override

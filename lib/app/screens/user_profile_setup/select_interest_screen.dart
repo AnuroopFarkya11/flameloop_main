@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../ContentStrings.dart';
+import '../../../ContentStrings.dart';
 
 class SelectInterest extends StatelessWidget {
   const SelectInterest({Key? key}) : super(key: key);

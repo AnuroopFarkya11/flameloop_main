@@ -1,11 +1,11 @@
-import 'package:flameloop/app/screens/auth_screens/getx_helper/controller.dart';
+import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
 import 'package:flameloop/app/screens/auth_screens/mobile_auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GetOtpTextField extends GetView<PhoneAuthController> {
+class GetOtpTextField extends GetView<AuthController> {
   const GetOtpTextField({Key? key}) : super(key: key);
 
   @override
