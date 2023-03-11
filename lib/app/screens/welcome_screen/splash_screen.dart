@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

@@ -1,7 +1,7 @@
 import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
-import 'package:flameloop/app/screens/auth_screens/mobile_auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -15,8 +15,8 @@ class GetOtpTextField extends GetView<AuthController> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.firstNumber,
               onChanged: (value){
@@ -32,7 +32,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
@@ -45,8 +45,8 @@ class GetOtpTextField extends GetView<AuthController> {
             ),
           ),
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.secondNumber,
               onChanged: (value){
@@ -63,7 +63,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
@@ -76,8 +76,8 @@ class GetOtpTextField extends GetView<AuthController> {
             ),
           ),
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.thirdNumber,
               onChanged: (value){
@@ -95,7 +95,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
@@ -108,8 +108,8 @@ class GetOtpTextField extends GetView<AuthController> {
             ),
           ),
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.fourthNumber,
               onChanged: (value){
@@ -126,7 +126,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
@@ -139,8 +139,8 @@ class GetOtpTextField extends GetView<AuthController> {
             ),
           ),
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.fifthNumber,
               onChanged: (value){
@@ -157,7 +157,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
@@ -170,8 +170,8 @@ class GetOtpTextField extends GetView<AuthController> {
             ),
           ),
           SizedBox(
-            height: 50,
-            width: 50,
+            height: 50.h,
+            width: 50.w,
             child: TextFormField(
               controller: controller.sixthNumber,
               onChanged: (value){
@@ -188,7 +188,7 @@ class GetOtpTextField extends GetView<AuthController> {
                 LengthLimitingTextInputFormatter(1),
                 FilteringTextInputFormatter.digitsOnly
               ],
-              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20.sp),
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,

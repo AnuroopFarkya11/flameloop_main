@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../ContentStrings.dart';
@@ -14,7 +15,7 @@ class SelectInterest extends StatelessWidget {
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -22,11 +23,11 @@ class SelectInterest extends StatelessWidget {
               ContentStrings.getSelectCatedoriesStr1,
               style: GoogleFonts.poppins(
                   color: Colors.white,
-                  fontSize: 25,
+                  fontSize: 25.sp,
                   fontWeight: FontWeight.w700),
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 20.h,
             ),
             TextField(
               cursorColor: Colors.black,
@@ -41,9 +42,9 @@ class SelectInterest extends StatelessWidget {
                   hintText: "Search Categories",
                   hintStyle: GoogleFonts.poppins(),
                   border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10)),
+                      borderRadius: BorderRadius.circular(10.r)),
                   focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                       borderSide: const BorderSide(
                         color: Colors.white,
                       ))),
@@ -53,7 +54,7 @@ class SelectInterest extends StatelessWidget {
       ),
 
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10,horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 10.h,horizontal: 15.w),
         child: ElevatedButton(onPressed: (){},child: Text('Next',style: GoogleFonts.poppins(color: Colors.black),),),
       ),
 

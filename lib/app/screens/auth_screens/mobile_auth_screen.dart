@@ -3,6 +3,7 @@ import 'package:flameloop/app/Widgets/input_phone_number.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -19,7 +20,7 @@ class MobileAuthScreen extends GetView<AuthController> {
         backgroundColor: Colors.transparent,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+        padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
@@ -29,26 +30,26 @@ class MobileAuthScreen extends GetView<AuthController> {
               selectedColor: Colors.white,
               unselectedColor: Colors.white24,
             ),
-            const SizedBox(
-              height: 20,
+            SizedBox(
+              height: 20.h,
             ),
             Text(
               ContentStrings.getMobileScreenStr1,
-              style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15),
+              style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
             ),
-            const SizedBox(
-              height: 13,
+            SizedBox(
+              height: 13.h,
             ),
 
             // Enter your mobile number
             Text(ContentStrings.getMobileScreenStr2,
                 style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: 25,
+                    fontSize: 25.sp,
                     fontWeight: FontWeight.w700)),
 
-            const SizedBox(
-              height: 30,
+            SizedBox(
+              height: 30.h,
             ),
 
             const InputPhoneNumber(),
@@ -57,7 +58,7 @@ class MobileAuthScreen extends GetView<AuthController> {
             ),
 
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 10),
+              padding: EdgeInsets.symmetric(vertical: 10.w),
               child: ElevatedButton(
                   onPressed: () async {
                     if (controller.validate()) {
@@ -71,17 +72,17 @@ class MobileAuthScreen extends GetView<AuthController> {
                           timeInSecForIosWeb: 3,
                           backgroundColor: Colors.grey[300],
                           textColor: Colors.black,
-                          fontSize: 16.0);
+                          fontSize: 16.sp);
                     }
                   },
                   child: Container(
-                    padding: const EdgeInsets.symmetric(vertical: 15),
+                    padding: EdgeInsets.symmetric(vertical: 15.w),
                     child: Text(
                       "Get OTP",
                       style: GoogleFonts.poppins(
                           color: Colors.black,
                           fontWeight: FontWeight.w500,
-                          fontSize: 18),
+                          fontSize: 18.sp),
                     ),
                   )),
             ),
@@ -90,7 +91,7 @@ class MobileAuthScreen extends GetView<AuthController> {
             Center(
               child: Text(
                 ContentStrings.getMobileScreenStr3,
-                style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15),
+                style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
               ),
             ),
 

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/services.dart';
 
-class Input_TextField extends StatelessWidget {
-  String labelText = "";
-  String? inputType = "text";
+class InputTextField extends StatelessWidget {
+  final String labelText;
+  final String inputType;
 
-  Input_TextField({Key? key, required this.labelText, this.inputType})
+  const InputTextField({Key? key, this.labelText = "", this.inputType = "text"})
       : super(key: key);
 
   @override
@@ -20,11 +20,11 @@ class Input_TextField extends StatelessWidget {
         border: OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
         filled: true,
         fillColor: Colors.white24,
-        labelText: "$labelText",
+        labelText: labelText,
         labelStyle: GoogleFonts.poppins(
             color: Colors.white, fontWeight: FontWeight.w500, letterSpacing: 0),
         focusedBorder:
-            OutlineInputBorder(borderSide: BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(10)),
+            OutlineInputBorder(borderSide: const BorderSide(color: Colors.white),borderRadius: BorderRadius.circular(10.r)),
       ),
     );
   }

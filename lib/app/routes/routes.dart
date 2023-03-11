@@ -25,7 +25,7 @@ class RouteClass {
     GetPage(
       name: RoutePaths.mobileAuthScreen,
       page: () => const MobileAuthScreen(),
-      binding: MobileAuthBinding()
+      binding: AuthBinding()
     ),
     GetPage(
         name: RoutePaths.otpVerificationScreen,

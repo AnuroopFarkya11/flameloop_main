@@ -44,9 +44,8 @@ dependencies:
   firebase_in_app_messaging: ^0.7.0+8
   firebase_auth: ^4.2.1
   fluttertoast: ^8.2.1
-
+  flutter_screenutil: ^5.7.0
   cloud_firestore: ^4.2.0
-  flutter_screenutil: ^5.3.1
   get: ^4.6.1
   intl: ^0.17.0
   pull_to_refresh: ^2.0.0

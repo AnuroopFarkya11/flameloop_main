@@ -1,6 +1,7 @@
 import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -10,27 +11,27 @@ class InputPhoneNumber extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 60,
+      height: 60.h,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           // Indian FLag
           Image.asset(
             "assets/phonenumberscreen/flagindia.png",
-            height: 30,
+            height: 30.h,
           ),
 
-          const SizedBox(
-            width: 10,
+          SizedBox(
+            width: 10.w,
           ),
           // Indian code
           Text(
             '+91',
-            style: GoogleFonts.poppins(color: Colors.white,fontSize: 15),
+            style: GoogleFonts.poppins(color: Colors.white,fontSize: 15.sp),
           ),
 
-          const SizedBox(
-            width: 10,
+          SizedBox(
+            width: 10.w,
           ),
 
           Expanded(

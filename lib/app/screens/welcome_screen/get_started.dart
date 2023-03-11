@@ -1,11 +1,11 @@
 import 'package:flameloop/ContentStrings.dart';
 import 'package:flameloop/app/routes/route_path.dart';
-import 'package:flameloop/controller/app_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class GetStarted extends GetView<AppController>{
+class GetStarted extends StatelessWidget{
   const GetStarted({Key? key}) : super(key: key);
 
   @override
@@ -17,47 +17,38 @@ class GetStarted extends GetView<AppController>{
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            // "BEST SOCIAL MEDIA APP TO MAKE NEW FRIENDS"
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 30, left: 20, right: 20, bottom: 0),
+              padding: EdgeInsets.only(
+                  top: 30.h, left: 20.w, right: 20.w),
               child: Text(
                 ContentStrings.getStartedstr1,
                 style: GoogleFonts.poppins(
                     color: Colors.white,
-                    fontSize: 20,
+                    fontSize: 18.sp,
                     fontWeight: FontWeight.w700),
               ),
             ),
-
-            // Next line
             Padding(
-              padding: const EdgeInsets.only(
-                  top: 0, left: 20, right: 20, bottom: 40),
+              padding: EdgeInsets.only(
+                  left: 20.h, right: 20.w, bottom: 40.h),
               child: Text(
                 ContentStrings.getStartedstr2,
                 style:
-                    GoogleFonts.poppins(color: const Color(0xffBDBCBC), fontSize: 15),
+                    GoogleFonts.poppins(color: const Color(0xffBDBCBC), fontSize: 15.sp),
               ),
             ),
-
-            //  Image
             Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: EdgeInsets.all(10.w),
                 child: Image.asset("assets/getstartedscreen/gettry.png")),
 
-            const SizedBox(
-              height: 50,
+            SizedBox(
+              height: 50.h,
             ),
-            // Padding(
-            //   padding: const EdgeInsets.all(8.0),
-            //   child: ElevatedButton(onPressed: () {}, child: Text("Get Started"), ),
-            // )
           ],
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(10.0),
+        padding: EdgeInsets.all(10.h),
         child: ElevatedButton(
           onPressed: () {
             Get.toNamed(RoutePaths.mobileAuthScreen);
@@ -66,7 +57,6 @@ class GetStarted extends GetView<AppController>{
             "Get Started",
             style: TextStyle(color: Colors.black),
           ),
-          // style: ElevatedButton.styleFrom(primary: Colors.white,),
         ),
       ),
     );

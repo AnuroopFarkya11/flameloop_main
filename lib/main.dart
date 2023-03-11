@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
@@ -26,19 +27,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff28282B), primary: const Color(0xff28282B),),
-        elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ElevatedButton.styleFrom(
-            backgroundColor: Colors.white,
+    return ScreenUtilInit(
+      builder:(context, child) => GetMaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff28282B), primary: const Color(0xff28282B),),
+          elevatedButtonTheme: ElevatedButtonThemeData(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.white,
+            )
           )
-        )
+        ),
+        initialRoute: RoutePaths.splashScreen,
+        getPages: RouteClass.routes,
       ),
-      initialRoute: RoutePaths.splashScreen,
-      getPages: RouteClass.routes,
     );
   }
 }
