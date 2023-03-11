@@ -1,4 +1,4 @@
-import 'package:flameloop/ContentStrings.dart';
+import 'package:flameloop/app/utils/ContentStrings.dart';
 import 'package:flameloop/app/Widgets/input_phone_number.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';

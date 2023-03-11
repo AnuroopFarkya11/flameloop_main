@@ -1,6 +1,6 @@
 import 'dart:developer';
 
-import 'package:flameloop/ContentStrings.dart';
+import 'package:flameloop/app/utils/ContentStrings.dart';
 import 'package:flameloop/app/Widgets/input_textfields.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flutter/material.dart';
