@@ -1,4 +1,4 @@
-import 'package:flameloop/ContentStrings.dart';
+import 'package:flameloop/app/utils/ContentStrings.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
