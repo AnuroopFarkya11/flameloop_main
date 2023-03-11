@@ -52,16 +52,29 @@ class FirebaseFireStore extends GetxController{
     );
   }
 
-  Future<void> verifySMSCode(String phoneNumber, String otp) async {
+  Future<bool> verifySMSCode(String phoneNumber, String otp) async {
     final credential = PhoneAuthProvider.credential(
       verificationId: verificationId,
       smsCode: otp,
     );
     final value = await auth.signInWithCredential(credential);
     if (value.user != null) {
-      //TODO: Have to implement the newUser detection feature
+      UserModel? userModel = await getUser(value.user!.uid);
+      if(userModel == null) {
+        userModel = UserModel(
+          uid: value.user!.uid,
+          username: '',
+          email: '',
+          photoId: '',
+          phoneNumber: phoneNumber,
+          userState: AuthUserState.newUser,
+        );
+        await addUser(userModel);
+      }
+      await UserStore.to.saveProfile(userModel.uid);
+      return true;
     }else{
-
+      return false;
     }
   }
 

@@ -12,23 +12,23 @@ class SetUpProfile extends GetView {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.black,
+        backgroundColor: Theme.of(context).colorScheme.primary,
         appBar: AppBar(
           backgroundColor: Colors.transparent,
         ),
         body: SingleChildScrollView(
           child: Padding(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                StepProgressIndicator(
+                const StepProgressIndicator(
                   totalSteps: 4,
                   currentStep: 3,
                   selectedColor: Colors.white,
                   unselectedColor: Colors.white24,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 Container(
@@ -40,100 +40,98 @@ class SetUpProfile extends GetView {
                         fit: BoxFit.cover,
                       ),
                     )),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    children: [
-                      // Content line Yay
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    // Content line Yay
 
-                      Text(
-                        ContentStrings.getSetUpProfileStr1,
-                        style: GoogleFonts.poppins(
-                            color: Colors.white60, fontSize: 15),
-                      ),
+                    Text(
+                      ContentStrings.getSetUpProfileStr1,
+                      style: GoogleFonts.poppins(
+                          color: Colors.white60, fontSize: 15),
+                    ),
 
-                      SizedBox(
-                        height: 5,
-                      ),
+                    const SizedBox(
+                      height: 5,
+                    ),
 
-                      // Content line 2
-                      Text(
-                        ContentStrings.getSetUpProfileStr2,
-                        style: GoogleFonts.poppins(
-                            color: Colors.white,
-                            fontSize: 25,
-                            fontWeight: FontWeight.w700),
-                      ),
+                    // Content line 2
+                    Text(
+                      ContentStrings.getSetUpProfileStr2,
+                      style: GoogleFonts.poppins(
+                          color: Colors.white,
+                          fontSize: 25,
+                          fontWeight: FontWeight.w700),
+                    ),
 
-                      SizedBox(
-                        height: 20,
-                      ),
+                    const SizedBox(
+                      height: 20,
+                    ),
 
-                      //  IMAGE AVATAR
-                      GestureDetector(
-                        onTap: () {
-                          print("Add photos");
-                        },
-                        child: Align(
-                          alignment: Alignment.centerLeft,
+                    //  IMAGE AVATAR
+                    GestureDetector(
+                      onTap: () {
+                        print("Add photos");
+                      },
+                      child: const Align(
+                        alignment: Alignment.centerLeft,
+                        child: CircleAvatar(
+                          radius: 40,
                           child: CircleAvatar(
                             radius: 40,
-                            child: CircleAvatar(
-                              radius: 40,
-                              backgroundImage: AssetImage(
-                                  "assets/setupprofilescreen/avatar.png"),
-                              child: Align(
-                                  alignment: Alignment.bottomRight,
-                                  child: Icon(
-                                    Icons.add_circle,
-                                    color: Colors.white,
-                                    size: 20,
-                                  )),
-                            ),
+                            backgroundImage: AssetImage(
+                                "assets/setupprofilescreen/avatar.png"),
+                            child: Align(
+                                alignment: Alignment.bottomRight,
+                                child: Icon(
+                                  Icons.add_circle,
+                                  color: Colors.white,
+                                  size: 20,
+                                )),
                           ),
                         ),
                       ),
+                    ),
 
-                      SizedBox(
-                        height: 30,
-                      ),
+                    const SizedBox(
+                      height: 30,
+                    ),
 
-                      Input_TextField(
-                        labelText: 'Name',
-                        inputType: "text",
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                    Input_TextField(
+                      labelText: 'Name',
+                      inputType: "text",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
 
-                      Input_TextField(
-                        labelText: 'Email',
-                        inputType: "text",
-                      ),
-                      SizedBox(
-                        height: 20,
-                      ),
+                    Input_TextField(
+                      labelText: 'Email',
+                      inputType: "text",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
 
-                      Input_TextField(
-                        labelText: 'Something About you',
-                        inputType: "text",
+                    Input_TextField(
+                      labelText: 'Something About you',
+                      inputType: "text",
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                    Align(
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        ContentStrings.getSetUpProfileStr3,
+                        style: GoogleFonts.poppins(
+                            color: Colors.white60, fontSize: 12),
                       ),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Align(
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          ContentStrings.getSetUpProfileStr3,
-                          style: GoogleFonts.poppins(
-                              color: Colors.white60, fontSize: 12),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 )
               ],
             ),
@@ -146,7 +144,7 @@ class SetUpProfile extends GetView {
               Get.toNamed(RoutePaths.selectInterest);
             },
             child: Container(
-              padding: EdgeInsets.symmetric(vertical: 15),
+              padding: const EdgeInsets.symmetric(vertical: 15),
               child: Text(
                 "Complete Setup",
                 style: GoogleFonts.poppins(color: Colors.black),

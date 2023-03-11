@@ -11,6 +11,7 @@ class ContentStrings{
   static String getMobileScreenStr1 = "Welcome ❤️";
   static String getMobileScreenStr2 = "Enter Your Mobile Number";
   static String getMobileScreenStr3 = "An OTP is sent to your mobile number";
+  static String resendOtp = "Resend after";
 
 
   //CONTENT : ENTER OTP SCREEN

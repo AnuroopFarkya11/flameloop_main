@@ -1,11 +1,12 @@
+import 'package:flameloop/app/layouts/get_started.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
 import 'package:flameloop/app/layouts/select_interest_screen.dart';
 import 'package:flameloop/app/layouts/setup_profile_screen.dart';
 import 'package:flameloop/app/layouts/splash_screen.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:get/get.dart';
-import 'package:flameloop/app/layouts/splash_screen.dart';
 
+import '../screens/auth_screens/getx_helper/mobile_auth_binding.dart';
 import '../screens/auth_screens/mobile_auth_screen.dart';
 
 class RouteClass {
@@ -20,22 +21,18 @@ class RouteClass {
   static String getSelectInterestScreen() => RoutePaths.selectInterest;
 
   static List<GetPage> routes = [
-    GetPage(
-      name: RoutePaths.splashScreen,
-      page: () => const SplashScreen()),
+    GetPage(name: RoutePaths.splashScreen, page: () => const SplashScreen()),
     GetPage(
       name: RoutePaths.mobileAuthScreen,
-      page: () => const MobileAuthScreen()),
-    GetPage(
-      name: RoutePaths.otpVerificationScreen,
-      page: () => const OtpVerificationScreen()),
-    GetPage(
-      name: RoutePaths.setUpProfile,
-      page: () => const SetUpProfile()),
-    GetPage(
-      name: RoutePaths.selectInterest,
-      page: () => const SelectInterest()
+      page: () => const MobileAuthScreen(),
+      binding: MobileAuthBinding()
     ),
-
+    GetPage(
+        name: RoutePaths.otpVerificationScreen,
+        page: () => const OtpVerificationScreen()),
+    GetPage(name: RoutePaths.setUpProfile, page: () => const SetUpProfile()),
+    GetPage(
+        name: RoutePaths.selectInterest, page: () => const SelectInterest()),
+    GetPage(name: RoutePaths.getStarted, page: () => const GetStarted()),
   ];
 }

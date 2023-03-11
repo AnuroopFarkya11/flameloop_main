@@ -1,9 +1,12 @@
+import 'package:flameloop/app/screens/auth_screens/getx_helper/controller.dart';
+import 'package:flameloop/app/screens/auth_screens/mobile_auth_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class Get_Otp_Textfield extends StatelessWidget {
-  const Get_Otp_Textfield({Key? key}) : super(key: key);
+class GetOtpTextField extends GetView<PhoneAuthController> {
+  const GetOtpTextField({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -12,10 +15,10 @@ class Get_Otp_Textfield extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           SizedBox(
-            height: 68,
-            width: 64,
+            height: 50,
+            width: 50,
             child: TextFormField(
-
+              controller: controller.firstNumber,
               onChanged: (value){
                 if(value.length==1)
                   {
@@ -33,19 +36,19 @@ class Get_Otp_Textfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "0",
                 hintStyle: GoogleFonts.poppins(color: Colors.white38),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
               ),
             ),
           ),
           SizedBox(
-            height: 68,
-            width: 64,
+            height: 50,
+            width: 50,
             child: TextFormField(
-
+              controller: controller.secondNumber,
               onChanged: (value){
                 if(value.length==1)
                 {
@@ -64,19 +67,19 @@ class Get_Otp_Textfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "0",
                 hintStyle: GoogleFonts.poppins(color: Colors.white38),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
               ),
             ),
           ),
           SizedBox(
-            height: 68,
-            width: 64,
+            height: 50,
+            width: 50,
             child: TextFormField(
-
+              controller: controller.thirdNumber,
               onChanged: (value){
                 if(value.length==1)
                 {
@@ -96,19 +99,19 @@ class Get_Otp_Textfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "0",
                 hintStyle: GoogleFonts.poppins(color: Colors.white38),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
               ),
             ),
           ),
           SizedBox(
-            height: 68,
-            width: 64,
+            height: 50,
+            width: 50,
             child: TextFormField(
-
+              controller: controller.fourthNumber,
               onChanged: (value){
                 if(value.length==1)
                 {
@@ -127,19 +130,19 @@ class Get_Otp_Textfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "0",
                 hintStyle: GoogleFonts.poppins(color: Colors.white38),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
               ),
             ),
           ),
           SizedBox(
-            height: 68,
-            width: 64,
+            height: 50,
+            width: 50,
             child: TextFormField(
-
+              controller: controller.fifthNumber,
               onChanged: (value){
                 if(value.length==1)
                 {
@@ -158,15 +161,45 @@ class Get_Otp_Textfield extends StatelessWidget {
               decoration: InputDecoration(
                 filled: true,
                 fillColor: Colors.white24,
-                border: OutlineInputBorder(),
+                border: const OutlineInputBorder(),
                 hintText: "0",
                 hintStyle: GoogleFonts.poppins(color: Colors.white38),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                     borderSide: BorderSide(color: Colors.white)),
               ),
             ),
           ),
+          SizedBox(
+            height: 50,
+            width: 50,
+            child: TextFormField(
+              controller: controller.sixthNumber,
+              onChanged: (value){
+                if(value.length==1)
+                {
+                  FocusScope.of(context).nextFocus();
+                }
+              },
+              onSaved: (pin1){},
 
+              keyboardType: TextInputType.number,
+              textAlign: TextAlign.center,
+              inputFormatters: [
+                LengthLimitingTextInputFormatter(1),
+                FilteringTextInputFormatter.digitsOnly
+              ],
+              style: GoogleFonts.poppins(color: Colors.white,fontWeight: FontWeight.w700,fontSize: 20),
+              decoration: InputDecoration(
+                filled: true,
+                fillColor: Colors.white24,
+                border: const OutlineInputBorder(),
+                hintText: "0",
+                hintStyle: GoogleFonts.poppins(color: Colors.white38),
+                focusedBorder: const OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.white)),
+              ),
+            ),
+          ),
 
         ],
       ),

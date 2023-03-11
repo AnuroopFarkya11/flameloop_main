@@ -17,6 +17,7 @@ Future<void> main() async {
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
 
+
   runApp(const MyApp());
 }
 
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff28282B), primary: const Color(0xff28282B),),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
             backgroundColor: Colors.white,
