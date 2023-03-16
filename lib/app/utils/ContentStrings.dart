@@ -26,6 +26,6 @@ class ContentStrings{
   static String getSetUpProfileStr3 = "By clicking next you will agreeing our term and conditions";
 
   //CONTENT: SELECT CATEGORIES
-  static String getSelectCatedoriesStr1 = "Search";
+  static String getSelectCatedoriesStr1 = "I'm interested in";
 
 }

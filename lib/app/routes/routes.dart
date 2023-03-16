@@ -1,4 +1,4 @@
-import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
+  import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/setup_profile_screen.dart';
@@ -32,7 +32,7 @@ class RouteClass {
         page: () => const OtpVerificationScreen()),
     GetPage(name: RoutePaths.setUpProfile, page: () => const SetUpProfile()),
     GetPage(
-        name: RoutePaths.selectInterest, page: () => const SelectInterest()),
+        name: RoutePaths.selectInterest, page: () =>  SelectInterest()),
     GetPage(name: RoutePaths.getStarted, page: () => const GetStarted()),
   ];
 }

@@ -84,6 +84,7 @@ flutter:
     - assets/getstartedscreen/
     - assets/phonenumberscreen/
     - assets/setupprofilescreen/
+    - assets/interest_icons/
 
 #     - images/a_dot_burr.jpeg
 #     - images/a_dot_ham.jpeg

@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
             )
           )
         ),
-        initialRoute: RoutePaths.splashScreen,
+        initialRoute: RouteClass.getSelectInterestScreen(),
         getPages: RouteClass.routes,
       ),
     );
