@@ -7,7 +7,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 import '../../utils/ContentStrings.dart';
-import '../../Widgets/get_otp_textfield.dart';
+import '../../widgets/get_otp_textfield.dart';
 import '../../routes/route_path.dart';
 import '../../services/user.dart';
 
