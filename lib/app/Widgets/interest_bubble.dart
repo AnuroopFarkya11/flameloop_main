@@ -1,46 +1,49 @@
 import 'dart:developer';
 
+import 'package:flameloop/app/screens/user_profile_setup/getx_helper/controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:get/get.dart';
 
-import '../models/interest_model.dart';
-class Interest_Bubble extends StatefulWidget {
+import '../models/interest_model/interest_model.dart';
 
-  InterestClass interest_obj;
+class InterestTile extends GetView<SetProfileController> {
+  final InterestModel interest;
 
-  Interest_Bubble({Key? key, required this.interest_obj}) : super(key: key);
+  const InterestTile({Key? key, required this.interest}) : super(key: key);
 
-  @override
-  State<Interest_Bubble> createState() => _Interest_BubbleState();
-}
-
-class _Interest_BubbleState extends State<Interest_Bubble> {
-
-
-  late Color color= Colors.white;
-
-  // TODO
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        log("Interest CLicked : " + widget.interest_obj.interest_text);
-        setState(() {
-          color= color==Colors.white?Colors.blue:Colors.white;
-        });
+        controller.selectSkills(interest);
       },
-      child: Container(
-        height: 30,
-        width: widget.interest_obj.interest_text.length<5?100:120,
-
-        decoration: BoxDecoration(
-            color: color,
-            borderRadius: BorderRadius.circular(15)),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image.asset("${widget.interest_obj.icon_path}"),
-            Text("${widget.interest_obj.interest_text}")
-          ],
+      child: Obx(
+        () => Container(
+          padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.w),
+          decoration: BoxDecoration(
+              color: Colors.white,
+              border: Border.all(
+                color: controller.skillsSelected.contains(interest)
+                    ? Colors.orange
+                    : Colors.white,
+                width: 4,
+              ),
+              borderRadius: BorderRadius.circular(20)),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Image.network(
+                interest.icon,
+                height: 20,
+                width: 20,
+              ),
+              const SizedBox(
+                width: 13,
+              ),
+              Text(interest.name)
+            ],
+          ),
         ),
       ),
     );

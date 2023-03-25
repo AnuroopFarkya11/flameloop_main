@@ -5,13 +5,15 @@ import 'package:google_fonts/google_fonts.dart';
 class InputTextField extends StatelessWidget {
   final String labelText;
   final String inputType;
+  final TextEditingController controller;
 
-  const InputTextField({Key? key, this.labelText = "", this.inputType = "text"})
+  const InputTextField({Key? key,required this.controller, this.labelText = "", this.inputType = "text"})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return TextField(
+      controller: controller,
       style: GoogleFonts.poppins(color: Colors.white, letterSpacing: 1),
       cursorColor: Colors.white,
       keyboardType:

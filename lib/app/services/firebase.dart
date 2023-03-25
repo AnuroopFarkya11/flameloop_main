@@ -2,6 +2,7 @@ import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
 import 'package:flameloop/app/services/user.dart';
 import 'package:get/get.dart';
@@ -12,6 +13,7 @@ class FirebaseFireStore extends GetxController{
   static FirebaseFireStore get to => Get.find();
   final FirebaseFirestore fireStore = FirebaseFirestore.instance;
   FirebaseAuth auth = FirebaseAuth.instance;
+  FirebaseStorage storage = FirebaseStorage.instance;
   String verificationId = '';
 
 
@@ -23,6 +25,13 @@ class FirebaseFireStore extends GetxController{
   Future<UserModel?> getUser(String uid) async {
     final doc = await fireStore.collection("Users").doc(uid).get();
     return doc.exists ? UserModel.fromJson(doc.data()!) : null;
+  }
+
+  Future<void> updateUse(UserModel user) async {
+    await fireStore
+        .collection('Users')
+        .doc(user.uid)
+        .update(user.toJson());
   }
 
   Future<String?> getUserState(String phoneNumber) async {
@@ -66,6 +75,8 @@ class FirebaseFireStore extends GetxController{
           username: '',
           email: '',
           photoId: '',
+          aboutUser: '',
+          skills: [],
           phoneNumber: phoneNumber,
           userState: AuthUserState.newUser,
         );
@@ -110,6 +121,8 @@ class FirebaseFireStore extends GetxController{
         username: username,
         email: email,
         photoId: '',
+        aboutUser: '',
+        skills: [],
         phoneNumber: phoneNumber,
         userState: AuthUserState.newUser
       );
@@ -128,6 +141,12 @@ class FirebaseFireStore extends GetxController{
       log('$e Occurred');
       return false;
     }
+  }
+
+  Stream<QuerySnapshot> getAllSkillsOptions() {
+    return fireStore
+        .collection('skills')
+        .snapshots();
   }
 
 

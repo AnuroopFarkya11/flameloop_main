@@ -1,4 +1,5 @@
 import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
+import 'package:flameloop/app/models/interest_model/interest_model.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 part 'user_model.freezed.dart';
@@ -13,6 +14,8 @@ class UserModel with _$UserModel{
     required String email,
     required String photoId,
     required String phoneNumber,
+    required String aboutUser,
+    required List<InterestModel> skills,
     required AuthUserState userState
   }) = _UserModel;
 

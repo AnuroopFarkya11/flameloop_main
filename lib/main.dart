@@ -4,6 +4,7 @@ import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
+import 'app/screens/user_profile_setup/getx_helper/controller.dart';
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
 import 'app/services/user.dart';
@@ -17,6 +18,7 @@ Future<void> main() async {
   Get.put<FirebaseFireStore>(FirebaseFireStore());
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
+  Get.put(SetProfileController());
 
 
   runApp(const MyApp());
@@ -39,7 +41,7 @@ class MyApp extends StatelessWidget {
             )
           )
         ),
-        initialRoute: RouteClass.getSelectInterestScreen(),
+        initialRoute: RoutePaths.selectInterest,
         getPages: RouteClass.routes,
       ),
     );

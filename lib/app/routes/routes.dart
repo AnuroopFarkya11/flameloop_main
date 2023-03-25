@@ -1,4 +1,5 @@
-  import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
+  import 'package:flameloop/app/screens/user_profile_setup/getx_helper/binding.dart';
+import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/setup_profile_screen.dart';
@@ -21,18 +22,33 @@ class RouteClass {
   static String getSelectInterestScreen() => RoutePaths.selectInterest;
 
   static List<GetPage> routes = [
-    GetPage(name: RoutePaths.splashScreen, page: () => const SplashScreen()),
+
+    GetPage(
+      name: RoutePaths.splashScreen,
+      page: () => const SplashScreen(),
+    ),
+
     GetPage(
       name: RoutePaths.mobileAuthScreen,
       page: () => const MobileAuthScreen(),
       binding: AuthBinding()
     ),
+
     GetPage(
-        name: RoutePaths.otpVerificationScreen,
-        page: () => const OtpVerificationScreen()),
-    GetPage(name: RoutePaths.setUpProfile, page: () => const SetUpProfile()),
+      name: RoutePaths.otpVerificationScreen,
+      page: () => const OtpVerificationScreen(),
+    ),
+
     GetPage(
-        name: RoutePaths.selectInterest, page: () =>  SelectInterest()),
+      name: RoutePaths.setUpProfile,
+      page: () => const SetUpProfile(),
+      binding: SetProfileBinding()
+    ),
+    GetPage(
+      name: RoutePaths.selectInterest,
+      page: () =>  const SelectInterest(),
+
+    ),
     GetPage(name: RoutePaths.getStarted, page: () => const GetStarted()),
   ];
 }

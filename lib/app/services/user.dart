@@ -23,6 +23,8 @@ class UserStore extends GetxController {
     email: '',
     phoneNumber: '',
     username: '',
+    skills: [],
+    aboutUser: '',
     userState: AuthUserState.newUser
   ).obs;
 

@@ -12,6 +12,10 @@ _$_UserModel _$$_UserModelFromJson(Map<String, dynamic> json) => _$_UserModel(
       email: json['email'] as String,
       photoId: json['photoId'] as String,
       phoneNumber: json['phoneNumber'] as String,
+      aboutUser: json['aboutUser'] as String,
+      skills: (json['skills'] as List<dynamic>)
+          .map((e) => InterestModel.fromJson(e as Map<String, dynamic>))
+          .toList(),
       userState: $enumDecode(_$AuthUserStateEnumMap, json['userState']),
     );
 
@@ -22,6 +26,8 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'email': instance.email,
       'photoId': instance.photoId,
       'phoneNumber': instance.phoneNumber,
+      'aboutUser': instance.aboutUser,
+      'skills': instance.skills,
       'userState': _$AuthUserStateEnumMap[instance.userState]!,
     };
 
