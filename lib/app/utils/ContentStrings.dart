@@ -28,4 +28,13 @@ class ContentStrings{
   //CONTENT: SELECT CATEGORIES
   static String getSelectCatedoriesStr1 = "I'm interested in";
 
+
+
+  // CONTENT : MESSAGE SCREEN'
+  static String getMessageScreenStr1 = "No Conversation";
+  static String getMessageScreenStr2 = "You haven't started any conversations yet\nSearch for s friend to chat with";
+
+
+
+
 }
