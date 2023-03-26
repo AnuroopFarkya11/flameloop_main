@@ -1,9 +1,9 @@
 import 'dart:io';
 
-import 'package:flameloop/app/Widgets/input_textfields.dart';
+import 'package:flameloop/app/utils/ContentStrings.dart';
+import 'package:flameloop/app/widgets/input_textfields.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/controller.dart';
-import 'package:flameloop/app/utils/ContentStrings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -14,9 +14,7 @@ import 'package:step_progress_indicator/step_progress_indicator.dart';
 class SetUpProfile extends GetView<SetProfileController> {
   SetUpProfile({Key? key}) : super(key: key);
 
-  final formKey1 = GlobalKey<FormState>();
-  // final formKey2 = GlobalKey<FormState>();
-  // final formKey3 = GlobalKey<FormState>();
+  final formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +25,7 @@ class SetUpProfile extends GetView<SetProfileController> {
         ),
         body: SingleChildScrollView(
           child: Form(
-            key: formKey1,
+            key: formKey,
             child: Padding(
               padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
               child: Column(
@@ -175,7 +173,7 @@ class SetUpProfile extends GetView<SetProfileController> {
           padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
           child: ElevatedButton(
             onPressed: () async {
-              if (formKey1.currentState!.validate() ){
+              if (formKey.currentState!.validate() ){
                 await controller.saveUserData();
                 Get.toNamed(RoutePaths.selectInterest);
               }

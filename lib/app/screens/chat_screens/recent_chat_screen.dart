@@ -1,8 +1,9 @@
-import 'package:flameloop/app/Widgets/Chat_user.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../widgets/Chat_user.dart';
 
 class RecentChatScreen extends GetView<ChatController> {
   const RecentChatScreen({Key? key}) : super(key: key);

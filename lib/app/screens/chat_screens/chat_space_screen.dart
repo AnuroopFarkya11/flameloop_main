@@ -1,11 +1,11 @@
 import 'package:cached_network_image/cached_network_image.dart';
-import 'package:flameloop/app/Widgets/Chat_input.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/chat_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../widgets/Chat_input.dart';
 import 'getx_helper/chat_space_helper/chat_space_library.dart';
 
 class ChatSpace extends GetView<ChatSpaceController> {
