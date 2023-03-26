@@ -1,3 +1,5 @@
+import 'package:flameloop/app/routes/route_path.dart';
+import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -11,8 +13,9 @@ class ChatUser extends GetView {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: (){
+        //TODO PASS ARGUMENT USING USER MODEL
         print("CLicked:${index}");
-        Get.toNamed()
+        Get.toNamed(RouteClass.getChatScreen());
       },
       child: Container(
         margin: EdgeInsets.all(1.0),

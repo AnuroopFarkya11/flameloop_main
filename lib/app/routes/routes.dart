@@ -1,3 +1,4 @@
+import 'package:flameloop/app/screens/chat_screens/Chat_Screen.dart';
 import 'package:flameloop/app/screens/chat_screens/message_screen.dart';
 import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
@@ -26,6 +27,9 @@ class RouteClass {
 
   static String getStartNewChatScreen() => RoutePaths.startNewChatScreen;
 
+  static String getChatScreen() => RoutePaths.ChatScreen;
+
+
   static List<GetPage> routes = [
     GetPage(name: RoutePaths.splashScreen, page: () => const SplashScreen()),
     GetPage(
@@ -39,6 +43,8 @@ class RouteClass {
     GetPage(name: RoutePaths.selectInterest, page: () => SelectInterest()),
     GetPage(name: RoutePaths.getStarted, page: () => const GetStarted()),
     GetPage(name: RoutePaths.messageScreen,page: ()=>Message_Screen()),
-    GetPage(name: RoutePaths.startNewChatScreen, page: ()=>StartChat_Screen())
+    GetPage(name: RoutePaths.startNewChatScreen, page: ()=>StartChat_Screen()),
+    GetPage(name: RoutePaths.ChatScreen, page: ()=>Chat_Screen(userName: "user")),
+
   ];
 }
