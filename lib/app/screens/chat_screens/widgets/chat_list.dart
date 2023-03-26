@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../getx_helper/chat_space_library.dart';
+import '../getx_helper/chat_space_helper/chat_space_library.dart';
 import 'chat_left_item.dart';
 import 'chat_right_item.dart';
 

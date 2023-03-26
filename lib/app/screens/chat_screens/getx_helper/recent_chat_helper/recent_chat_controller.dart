@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
-import '../../../models/chat_room_model/chat_room_model.dart';
-import '../../../models/users/user_model.dart';
-import '../../../services/firebase.dart';
-import '../../../services/user.dart';
+import '../../../../models/chat_room_model/chat_room_model.dart';
+import '../../../../models/users/user_model.dart';
+import '../../../../services/firebase.dart';
+import '../../../../services/user.dart';
 import 'recent_chat_state.dart';
 
 class RecentChatController extends GetxController{

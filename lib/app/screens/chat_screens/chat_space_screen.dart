@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'getx_helper/chat_space_library.dart';
+import 'getx_helper/chat_space_helper/chat_space_library.dart';
 
 class ChatSpace extends GetView<ChatSpaceController> {
   const ChatSpace({Key? key}) : super(key: key);

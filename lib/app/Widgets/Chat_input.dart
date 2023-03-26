@@ -1,4 +1,4 @@
-import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_space_controller.dart';
+import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_space_helper/chat_space_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';

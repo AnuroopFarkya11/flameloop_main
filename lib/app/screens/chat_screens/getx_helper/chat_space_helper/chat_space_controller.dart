@@ -3,9 +3,9 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
-import '../../../models/chat_space_model/chat_space_model.dart';
-import '../../../services/firebase.dart';
-import '../../../services/user.dart';
+import '../../../../models/chat_space_model/chat_space_model.dart';
+import '../../../../services/firebase.dart';
+import '../../../../services/user.dart';
 import 'chat_space_state.dart';
 
 

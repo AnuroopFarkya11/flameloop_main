@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../../models/chat_space_model/chat_space_model.dart';
+import '../../../../models/chat_space_model/chat_space_model.dart';
 
 class ChatSpaceState {
   var _isLoading = true.obs;
