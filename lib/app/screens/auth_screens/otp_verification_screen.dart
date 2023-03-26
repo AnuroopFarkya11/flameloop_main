@@ -69,12 +69,11 @@ class OtpVerificationScreen extends GetView<AuthController> {
                 padding: EdgeInsets.symmetric(vertical: 10.h),
                 child: ElevatedButton(
                     onPressed: () async {
-                      if (!controller.isLoading.value &&
-                          await controller.validateOtp()) {
+                      if (!controller.isLoading.value && await controller.validateOtp()) {
                         if(UserStore.to.profile.userState == AuthUserState.newUser){
                           Get.toNamed(RoutePaths.setUpProfile);
                         }else{
-
+                          Get.toNamed(RoutePaths.recentChatScreen);
                         }
                       }
                     },

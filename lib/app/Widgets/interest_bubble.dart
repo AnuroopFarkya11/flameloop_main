@@ -1,22 +1,19 @@
-import 'dart:developer';
 
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../models/interest_model/interest_model.dart';
-
 class InterestTile extends GetView<SetProfileController> {
-  final InterestModel interest;
+  final int index;
 
-  const InterestTile({Key? key, required this.interest}) : super(key: key);
+  const InterestTile({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        controller.selectSkills(interest);
+        controller.skillsBool[index] = !controller.skillsBool[index];
       },
       child: Obx(
         () => Container(
@@ -24,7 +21,7 @@ class InterestTile extends GetView<SetProfileController> {
           decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(
-                color: controller.skillsSelected.contains(interest)
+                color: controller.skillsBool[index]
                     ? Colors.orange
                     : Colors.white,
                 width: 4,
@@ -34,17 +31,17 @@ class InterestTile extends GetView<SetProfileController> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.network(
-                interest.icon,
+                controller.interestList[index].icon,
                 height: 20,
                 width: 20,
               ),
               const SizedBox(
                 width: 13,
               ),
-              Text(interest.name)
+              Text(controller.interestList[index].name)
             ],
           ),
-        ),
+        )
       ),
     );
   }

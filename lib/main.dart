@@ -1,10 +1,14 @@
+import 'dart:developer';
+
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
-import 'app/screens/user_profile_setup/getx_helper/controller.dart';
+
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
 import 'app/services/user.dart';
@@ -18,8 +22,6 @@ Future<void> main() async {
   Get.put<FirebaseFireStore>(FirebaseFireStore());
   await Get.putAsync<StorageService>(() => StorageService().init());
   Get.put<UserStore>(UserStore());
-  Get.put(SetProfileController());
-
 
   runApp(const MyApp());
 }
@@ -29,19 +31,23 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(UserStore.to.profile.toString());
     return ScreenUtilInit(
-      builder:(context, child) => GetMaterialApp(
+      builder: (context, child) => GetMaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xff28282B), primary: const Color(0xff28282B),),
+          colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xff28282B),
+            primary: const Color(0xff28282B),
+          ),
           elevatedButtonTheme: ElevatedButtonThemeData(
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.white,
-            )
-          )
+            ),
+          ),
         ),
-        initialRoute: RoutePaths.selectInterest,
+        initialRoute: RoutePaths.splashScreen,
         getPages: RouteClass.routes,
       ),
     );

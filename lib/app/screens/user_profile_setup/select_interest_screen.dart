@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../routes/route_path.dart';
 import '../../utils/ContentStrings.dart';
 import 'getx_helper/controller.dart';
 
@@ -66,9 +67,9 @@ class SelectInterest extends GetView<SetProfileController> {
                 alignment: WrapAlignment.center,
                 children:
                     List.generate(controller.interestList.length, (index) {
-                  return InterestTile(interest: controller.interestList[index]);
+                  return InterestTile(index: index);
                 }),
-              ),
+              )
             ),
           ],
         ),
@@ -76,7 +77,11 @@ class SelectInterest extends GetView<SetProfileController> {
       bottomNavigationBar: Padding(
         padding: EdgeInsets.symmetric(vertical: 15.h, horizontal: 15.w),
         child: ElevatedButton(
-          onPressed: () {},
+          onPressed: () async {
+            controller.selectSkills();
+            await controller.updateUserProfile();
+            Get.toNamed(RoutePaths.recentChatScreen);
+          },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 12.h),
             child: Text(

@@ -35,7 +35,7 @@ class UserStore extends GetxController {
   @override
   Future<void> onInit() async {
     super.onInit();
-    getProfile();
+    await getProfile();
   }
 
   Future<void> setToken(String value) async {
@@ -48,6 +48,7 @@ class UserStore extends GetxController {
     if (uid.isNotEmpty) {
       _profile(await FirebaseFireStore.to.getUser(uid));
     }
+    log('user data: $_profile');
     _isLogin.value = true;
   }
 
