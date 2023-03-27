@@ -1,10 +1,35 @@
+import 'dart:developer';
+
+import 'package:flameloop/app/Widgets/Chat_Bubble.dart';
 import 'package:flameloop/app/Widgets/Chat_input.dart';
 import 'package:flutter/material.dart';
 
-class Chat_Screen extends StatelessWidget {
+import '../../models/Chat_Bubble/Chat_Message.dart';
+
+class Chat_Screen extends StatefulWidget {
   String userName;
 
   Chat_Screen({Key? key, required this.userName}) : super(key: key);
+
+  @override
+  State<Chat_Screen> createState() => _Chat_ScreenState();
+}
+
+class _Chat_ScreenState extends State<Chat_Screen> {
+  // todo fetch list from firebase
+  List<ChatMessage> Message_list = [];
+
+  void addMessageOnSubmit(ChatMessage chatMessageEntity) {
+    if(chatMessageEntity.text.isNotEmpty) {
+      setState(() {
+        Message_list!.add(chatMessageEntity);
+        log("New Message + ${chatMessageEntity.text}");
+      });
+    }
+    // Message_list.add(chatMessageEntity);
+
+    // log("New Message + ${chatMessageEntity.text} ${Message_list.length}");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +43,7 @@ class Chat_Screen extends StatelessWidget {
               SizedBox(
                 width: 20,
               ),
-              Text("${userName}")
+              Text("${widget.userName}")
             ],
           ),
           actions: [
@@ -31,11 +56,16 @@ class Chat_Screen extends StatelessWidget {
           ],
         ),
         body: Column(
-          children: [
-            Expanded(child: Center(child: Text("hi"))),
-
-            ChatInput()
-          ],
-        ));
+    children: [
+    Expanded(child: ListView.builder(itemCount:Message_list.length,
+        itemBuilder: (context, index) {
+          return ChatBubble(chatMessageEntity: Message_list[index]);
+        })),
+    ChatInput(
+    addMessage: addMessageOnSubmit,
+    )
+    ],
+    )
+    );
   }
 }

@@ -10,5 +10,7 @@ class RoutePaths {
   static String messageScreen = '/Message_Screen';
   static String startNewChatScreen = '/StartChat_Screen';
   static String ChatScreen = '/Chat_Screen';
+  static String HomeScreen = '/HomeScreen';
+
 
 }

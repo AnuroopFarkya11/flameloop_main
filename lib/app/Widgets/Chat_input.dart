@@ -1,6 +1,11 @@
+import 'package:flameloop/app/models/Chat_Bubble/Chat_Message.dart';
 import 'package:flutter/material.dart';
 class ChatInput extends StatelessWidget {
-  const ChatInput({Key? key}) : super(key: key);
+  Function(ChatMessage) addMessage;
+  ChatInput({Key? key,required this.addMessage}) : super(key: key);
+
+
+  TextEditingController textEditingController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -30,8 +35,8 @@ class ChatInput extends StatelessWidget {
               Expanded(
                   child: TextField(
                     cursorColor: Colors.white,
-                    // controller: widget.textEditingController,
-                    // keyboardType: TextInputType.text,
+                    controller: textEditingController,
+                    keyboardType: TextInputType.text,
                     minLines: 1,
                     maxLines: 5,
                     style: TextStyle(color: Colors.white),
@@ -44,7 +49,8 @@ class ChatInput extends StatelessWidget {
               ),
               IconButton(
                   onPressed: () {
-                    // onMessageSent();
+                    ChatMessage newChatMessage = new ChatMessage(text: textEditingController.text);
+                    addMessage(newChatMessage);
                   },
                   icon: Icon(
                     Icons.send,

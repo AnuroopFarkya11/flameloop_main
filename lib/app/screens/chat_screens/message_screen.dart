@@ -17,6 +17,9 @@ class Message_Screen extends GetView {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.primary
+        ),
         title: Text("Messages",style: TextStyle(color: Colors.black),),
         elevation: 0,
         backgroundColor: Colors.white,
@@ -49,6 +52,9 @@ class Message_Screen extends GetView {
           ),
         )
       ),
+      floatingActionButton: FloatingActionButton(backgroundColor:Colors.white,onPressed: (){
+        Get.toNamed(RoutePaths.startNewChatScreen);
+      },child: Icon(Icons.message,color: Theme.of(context).colorScheme.primary,),),
     );
   }
 }
