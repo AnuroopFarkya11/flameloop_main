@@ -25,6 +25,8 @@ mixin _$UserModel {
   String get email => throw _privateConstructorUsedError;
   String get photoId => throw _privateConstructorUsedError;
   String get phoneNumber => throw _privateConstructorUsedError;
+  String get aboutUser => throw _privateConstructorUsedError;
+  List<InterestModel> get skills => throw _privateConstructorUsedError;
   AuthUserState get userState => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,6 +46,8 @@ abstract class $UserModelCopyWith<$Res> {
       String email,
       String photoId,
       String phoneNumber,
+      String aboutUser,
+      List<InterestModel> skills,
       AuthUserState userState});
 }
 
@@ -65,6 +69,8 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
     Object? email = null,
     Object? photoId = null,
     Object? phoneNumber = null,
+    Object? aboutUser = null,
+    Object? skills = null,
     Object? userState = null,
   }) {
     return _then(_value.copyWith(
@@ -88,6 +94,14 @@ class _$UserModelCopyWithImpl<$Res, $Val extends UserModel>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      aboutUser: null == aboutUser
+          ? _value.aboutUser
+          : aboutUser // ignore: cast_nullable_to_non_nullable
+              as String,
+      skills: null == skills
+          ? _value.skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as List<InterestModel>,
       userState: null == userState
           ? _value.userState
           : userState // ignore: cast_nullable_to_non_nullable
@@ -109,6 +123,8 @@ abstract class _$$_UserModelCopyWith<$Res> implements $UserModelCopyWith<$Res> {
       String email,
       String photoId,
       String phoneNumber,
+      String aboutUser,
+      List<InterestModel> skills,
       AuthUserState userState});
 }
 
@@ -128,6 +144,8 @@ class __$$_UserModelCopyWithImpl<$Res>
     Object? email = null,
     Object? photoId = null,
     Object? phoneNumber = null,
+    Object? aboutUser = null,
+    Object? skills = null,
     Object? userState = null,
   }) {
     return _then(_$_UserModel(
@@ -151,6 +169,14 @@ class __$$_UserModelCopyWithImpl<$Res>
           ? _value.phoneNumber
           : phoneNumber // ignore: cast_nullable_to_non_nullable
               as String,
+      aboutUser: null == aboutUser
+          ? _value.aboutUser
+          : aboutUser // ignore: cast_nullable_to_non_nullable
+              as String,
+      skills: null == skills
+          ? _value._skills
+          : skills // ignore: cast_nullable_to_non_nullable
+              as List<InterestModel>,
       userState: null == userState
           ? _value.userState
           : userState // ignore: cast_nullable_to_non_nullable
@@ -168,7 +194,10 @@ class _$_UserModel implements _UserModel {
       required this.email,
       required this.photoId,
       required this.phoneNumber,
-      required this.userState});
+      required this.aboutUser,
+      required final List<InterestModel> skills,
+      required this.userState})
+      : _skills = skills;
 
   factory _$_UserModel.fromJson(Map<String, dynamic> json) =>
       _$$_UserModelFromJson(json);
@@ -184,11 +213,21 @@ class _$_UserModel implements _UserModel {
   @override
   final String phoneNumber;
   @override
+  final String aboutUser;
+  final List<InterestModel> _skills;
+  @override
+  List<InterestModel> get skills {
+    if (_skills is EqualUnmodifiableListView) return _skills;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_skills);
+  }
+
+  @override
   final AuthUserState userState;
 
   @override
   String toString() {
-    return 'UserModel(uid: $uid, username: $username, email: $email, photoId: $photoId, phoneNumber: $phoneNumber, userState: $userState)';
+    return 'UserModel(uid: $uid, username: $username, email: $email, photoId: $photoId, phoneNumber: $phoneNumber, aboutUser: $aboutUser, skills: $skills, userState: $userState)';
   }
 
   @override
@@ -203,6 +242,9 @@ class _$_UserModel implements _UserModel {
             (identical(other.photoId, photoId) || other.photoId == photoId) &&
             (identical(other.phoneNumber, phoneNumber) ||
                 other.phoneNumber == phoneNumber) &&
+            (identical(other.aboutUser, aboutUser) ||
+                other.aboutUser == aboutUser) &&
+            const DeepCollectionEquality().equals(other._skills, _skills) &&
             (identical(other.userState, userState) ||
                 other.userState == userState));
   }
@@ -210,7 +252,15 @@ class _$_UserModel implements _UserModel {
   @JsonKey(ignore: true)
   @override
   int get hashCode => Object.hash(
-      runtimeType, uid, username, email, photoId, phoneNumber, userState);
+      runtimeType,
+      uid,
+      username,
+      email,
+      photoId,
+      phoneNumber,
+      aboutUser,
+      const DeepCollectionEquality().hash(_skills),
+      userState);
 
   @JsonKey(ignore: true)
   @override
@@ -233,6 +283,8 @@ abstract class _UserModel implements UserModel {
       required final String email,
       required final String photoId,
       required final String phoneNumber,
+      required final String aboutUser,
+      required final List<InterestModel> skills,
       required final AuthUserState userState}) = _$_UserModel;
 
   factory _UserModel.fromJson(Map<String, dynamic> json) =
@@ -248,6 +300,10 @@ abstract class _UserModel implements UserModel {
   String get photoId;
   @override
   String get phoneNumber;
+  @override
+  String get aboutUser;
+  @override
+  List<InterestModel> get skills;
   @override
   AuthUserState get userState;
   @override
