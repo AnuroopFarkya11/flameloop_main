@@ -39,13 +39,13 @@ class ChatUser extends GetView<ChatController> {
         controller.createChatRoom(chatRoomModel, controller.users[index]);
       },
       child: Container(
-        margin: const EdgeInsets.symmetric(vertical: 5),
+        margin: EdgeInsets.symmetric(vertical: 10.h),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(10),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
+              color: Colors.black.withOpacity(0.4),
               blurRadius: 2,
             )
           ],

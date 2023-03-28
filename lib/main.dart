@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
+import 'app/screens/chat_screens/message_screen.dart';
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
 import 'app/services/user.dart';
@@ -47,7 +48,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: RoutePaths.splashScreen,
+        initialRoute: RoutePaths.messageScreen,
         getPages: RouteClass.routes,
       ),
     );
