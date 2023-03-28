@@ -1,9 +1,9 @@
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
-
 
 class RecentChatScreen extends GetView<ChatController> {
   const RecentChatScreen({Key? key}) : super(key: key);
@@ -11,48 +11,86 @@ class RecentChatScreen extends GetView<ChatController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
+        automaticallyImplyLeading: false,
         title: const Text(
-          "Start new chat",
-          style: TextStyle(color: Colors.white),
+          "Messages",
+          style: TextStyle(color: Colors.black),
         ),
         elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).colorScheme.primary,
+        backgroundColor: Colors.white,
+        bottom: PreferredSize(
+          preferredSize: Size(
+            MediaQuery.of(context).size.width,
+            60.h,
+          ),
+          child: Container(
+            color: Colors.blueAccent,
+          ),
+        ),
       ),
       body: Container(
-        color: Theme.of(context).colorScheme.primary,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
+        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.primary,
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(35),
+            topRight: Radius.circular(35),
+          ),
+        ),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Container(
-              margin: const EdgeInsets.only(
-                  left: 10, top: 10, right: 10, bottom: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40.0)),
-              child: ListTile(
-                leading: const Icon(Icons.search),
-                tileColor: Colors.white,
-                title: Text(
-                  "Search",
-                  style: GoogleFonts.poppins(),
-                ),
-              ),
-            ),
+            // Image.asset(
+            //   "assets/messageScreen/image.png",
+            //   height: 300,
+            // ),
+            // Text(
+            //   ContentStrings.getMessageScreenStr1,
+            //   style: GoogleFonts.poppins(
+            //     color: Colors.white,
+            //     fontSize: 17,
+            //     fontWeight: FontWeight.w600,
+            //   ),
+            // ),
+            // Text(
+            //   ContentStrings.getMessageScreenStr2,
+            //   style: GoogleFonts.poppins(
+            //     color: Colors.white,
+            //     fontSize: 13,
+            //   ),
+            //   textAlign: TextAlign.center,
+            // ),
+            // const SizedBox(
+            //   height: 20,
+            // ),
+            // ElevatedButton(
+            //   onPressed: () {
+            //     Get.toNamed(RoutePaths.startNewChatScreen);
+            //   },
+            //   child: Text(
+            //     "Send a message",
+            //     style: GoogleFonts.poppins(
+            //       color: Theme.of(context).colorScheme.primary,
+            //     ),
+            //   ),
+            // )
             Text(
               "Releated User",
               style: GoogleFonts.poppins(
-                  color: Colors.white, fontWeight: FontWeight.w500),
+                color: Colors.white,
+                fontWeight: FontWeight.w500,
+                fontSize: 15.sp,
+              ),
             ),
             Obx(
               () => !controller.isLoading.value
                   ? Expanded(
                       child: Container(
-                        color: Theme.of(context).colorScheme.primary,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.circular(15.r),
+                        ),
                         child: ListView.builder(
                           itemCount: controller.users.length,
                           shrinkWrap: true,
