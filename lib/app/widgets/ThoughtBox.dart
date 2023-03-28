@@ -13,7 +13,7 @@ class _ThoughtBoxState extends State<ThoughtBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 80,
+      height: 100,
       child: Row(
         children: [
           Expanded(child: Container(
