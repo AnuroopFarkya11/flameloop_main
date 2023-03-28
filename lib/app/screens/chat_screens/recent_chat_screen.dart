@@ -11,19 +11,23 @@ class RecentChatScreen extends GetView<ChatController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[100],
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: const Text(
+        title: Text(
           "Messages",
-          style: TextStyle(color: Colors.black),
+            style: GoogleFonts.poppins(
+              fontWeight: FontWeight.w500,
+              fontSize: 18.sp,
+              color: Colors.black
+          ),
         ),
         elevation: 0,
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[100],
         bottom: PreferredSize(
           preferredSize: Size(
             MediaQuery.of(context).size.width,
-            60.h,
+            80.h,
           ),
           child: Container(
             color: Colors.blueAccent,
@@ -31,58 +35,31 @@ class RecentChatScreen extends GetView<ChatController> {
         ),
       ),
       body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
+        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
-          borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(35),
-            topRight: Radius.circular(35),
+          borderRadius: BorderRadius.only(
+            topLeft: Radius.circular(15.r),
+            topRight: Radius.circular(15.r),
           ),
         ),
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Align(
+              alignment: Alignment.center,
+              child: Container(
+                width: 100.w,
+                height: 3.h,
+                decoration: BoxDecoration(
+                  color: Colors.white
+                ),
+              ),
+            ),
             // Image.asset(
             //   "assets/messageScreen/image.png",
             //   height: 300,
             // ),
-            // Text(
-            //   ContentStrings.getMessageScreenStr1,
-            //   style: GoogleFonts.poppins(
-            //     color: Colors.white,
-            //     fontSize: 17,
-            //     fontWeight: FontWeight.w600,
-            //   ),
-            // ),
-            // Text(
-            //   ContentStrings.getMessageScreenStr2,
-            //   style: GoogleFonts.poppins(
-            //     color: Colors.white,
-            //     fontSize: 13,
-            //   ),
-            //   textAlign: TextAlign.center,
-            // ),
-            // const SizedBox(
-            //   height: 20,
-            // ),
-            // ElevatedButton(
-            //   onPressed: () {
-            //     Get.toNamed(RoutePaths.startNewChatScreen);
-            //   },
-            //   child: Text(
-            //     "Send a message",
-            //     style: GoogleFonts.poppins(
-            //       color: Theme.of(context).colorScheme.primary,
-            //     ),
-            //   ),
-            // )
-            Text(
-              "Releated User",
-              style: GoogleFonts.poppins(
-                color: Colors.white,
-                fontWeight: FontWeight.w500,
-                fontSize: 15.sp,
-              ),
-            ),
             Obx(
               () => !controller.isLoading.value
                   ? Expanded(
