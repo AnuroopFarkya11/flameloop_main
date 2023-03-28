@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
 import 'package:flutter/material.dart';
@@ -36,10 +38,15 @@ class AvailableUsers extends GetView<ChatController> {
               child: ListTile(
                 leading: const Icon(Icons.search),
                 tileColor: Colors.white,
-                title: Text(
-                  "Search",
-                  style: GoogleFonts.poppins(),
-                ),
+                title: TextField(
+                  // TODO: search Controller
+                  autofocus: true,
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    hintText: "Search",
+                    hintStyle: GoogleFonts.poppins()
+                  ),
+                )
               ),
             ),
             Text(

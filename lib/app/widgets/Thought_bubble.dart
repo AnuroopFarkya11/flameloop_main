@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 class ThoughtBubble extends StatelessWidget {
   const ThoughtBubble({Key? key}) : super(key: key);
 
@@ -8,7 +9,13 @@ class ThoughtBubble extends StatelessWidget {
       width: 100,
       height: 100,
       child: Column(
-        children: [CircleAvatar(backgroundColor: Colors.yellow,)],
+        children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: AssetImage("assets/setupprofilescreen/avatar.png",),
+            
+          )
+        ],
       ),
     );
   }

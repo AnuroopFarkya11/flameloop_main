@@ -1,9 +1,12 @@
+import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+
+import '../../widgets/ThoughtBox.dart';
 
 class RecentChatScreen extends GetView<ChatController> {
   const RecentChatScreen({Key? key}) : super(key: key);
@@ -13,6 +16,9 @@ class RecentChatScreen extends GetView<ChatController> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Theme.of(context).colorScheme.primary
+        ),
         automaticallyImplyLeading: false,
         title: const Text(
           "Messages",
@@ -23,12 +29,16 @@ class RecentChatScreen extends GetView<ChatController> {
         bottom: PreferredSize(
           preferredSize: Size(
             MediaQuery.of(context).size.width,
-            60.h,
+            90.h,
           ),
-          child: Container(
-            color: Colors.blueAccent,
-          ),
+          child: ThoughtBox()
         ),
+        actions: [
+          IconButton(onPressed: (){
+            Get.toNamed(RoutePaths.availableUserScreen);
+
+          }, icon: Icon(Icons.search_rounded))
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(horizontal: 10.w, vertical: 10.w),
