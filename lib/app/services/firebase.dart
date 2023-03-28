@@ -39,7 +39,7 @@ class FirebaseFireStore extends GetxController {
   Stream<QuerySnapshot> getAllUsers() {
     return fireStore
         .collection("Users")
-        // .where("uid", isNotEqualTo: UserStore.to.uid)
+        .where("uid", isNotEqualTo: UserStore.to.uid)
         .snapshots();
   }
 
