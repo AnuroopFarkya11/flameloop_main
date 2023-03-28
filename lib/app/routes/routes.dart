@@ -1,6 +1,7 @@
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_space_helper/chat_space_library.dart';
+import 'package:flameloop/app/screens/chat_screens/message_screen.dart';
 import 'package:flameloop/app/screens/chat_screens/recent_chat_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/binding.dart';
 import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.dart';
@@ -24,6 +25,8 @@ class RouteClass {
   static String getSetUpProfileScreen() => RoutePaths.setUpProfile;
 
   static String getSelectInterestScreen() => RoutePaths.selectInterest;
+
+  static String getMessageScreen() => RoutePaths.messageScreen;
 
   static List<GetPage> routes = [
 
@@ -69,6 +72,12 @@ class RouteClass {
       name: RoutePaths.chatScreen,
       page: () => const ChatSpace(),
       binding: ChatSpaceBinding()
+    ),
+
+    GetPage(
+        name: RoutePaths.messageScreen,
+        page: () => MessageScreen(),
+
     ),
   ];
 }
