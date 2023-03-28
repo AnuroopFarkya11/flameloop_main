@@ -39,7 +39,7 @@ class ChatUser extends GetView<ChatController> {
         controller.createChatRoom(chatRoomModel, controller.users[index]);
       },
       child: Container(
-        margin: EdgeInsets.symmetric(vertical: 10.h),
+        margin: EdgeInsets.symmetric(vertical: 5.h, horizontal: 15.w),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.primary,
           borderRadius: BorderRadius.circular(10),

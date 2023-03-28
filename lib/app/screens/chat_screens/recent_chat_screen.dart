@@ -12,80 +12,96 @@ class RecentChatScreen extends GetView<ChatController> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Messages",
-            style: GoogleFonts.poppins(
-              fontWeight: FontWeight.w500,
-              fontSize: 18.sp,
-              color: Colors.black
-          ),
-        ),
-        elevation: 0,
-        backgroundColor: Colors.grey[100],
-        bottom: PreferredSize(
-          preferredSize: Size(
-            MediaQuery.of(context).size.width,
-            80.h,
-          ),
-          child: Container(
-            color: Colors.blueAccent,
-          ),
-        ),
-      ),
-      body: Container(
-        padding: EdgeInsets.symmetric(horizontal: 20.w, vertical: 10.w),
-        decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.primary,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(15.r),
-            topRight: Radius.circular(15.r),
-          ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Align(
-              alignment: Alignment.center,
-              child: Container(
-                width: 100.w,
-                height: 3.h,
-                decoration: BoxDecoration(
-                  color: Colors.white
-                ),
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            title: Text(
+              "Messages",
+              style: GoogleFonts.poppins(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18.sp,
+                  color: Colors.black
               ),
             ),
-            // Image.asset(
-            //   "assets/messageScreen/image.png",
-            //   height: 300,
-            // ),
-            Obx(
+            elevation: 0,
+            backgroundColor: Colors.grey[200],
+            bottom: PreferredSize(
+              preferredSize: Size(
+                MediaQuery.of(context).size.width,
+                80.h,
+              ),
+              child: Container(
+                color: Colors.blueAccent,
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Obx(
               () => !controller.isLoading.value
-                  ? Expanded(
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: Theme.of(context).colorScheme.primary,
-                          borderRadius: BorderRadius.circular(15.r),
+                  ? Container(
+                    decoration: BoxDecoration(
+                      color: Theme.of(context).colorScheme.primary,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(15.r),
+                        topRight: Radius.circular(15.r),
+                      ),
+                    ),
+                    child: Column(
+                      children: [
+                        Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                            color: Theme.of(context).colorScheme.primary,
+                            borderRadius: BorderRadius.only(
+                              topLeft: Radius.circular(15.r),
+                              topRight: Radius.circular(15.r),
+                            ),
+                          ),
+                          child: Container(
+                            width: 100.w,
+                            height: 3.h,
+                            margin: EdgeInsets.only(top: 15.w),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(40.r),
+                            ),
+                          ),
                         ),
-                        child: ListView.builder(
-                          itemCount: controller.users.length,
+                        Container(
+                          alignment: Alignment.topLeft,
+                          margin: EdgeInsets.only(top: 15.w, left: 15.w),
+                          decoration: BoxDecoration(
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(40.r),
+                          ),
+                          child: Text(
+                            'Recent Chats',
+                            style: GoogleFonts.poppins(
+                              color: Colors.white,
+                              fontSize: 18.sp,
+                            ),
+                          ),
+                        ),
+                        ListView.builder(
+                          itemCount: 20,
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {
-                            return ChatUser(index: index);
+                            return const ChatUser(index: 0);
                           },
                         ),
-                      ),
-                    )
+                      ],
+                    ),
+                  )
                   : const Center(
                       child: CircularProgressIndicator(
                         color: Colors.white,
                       ),
                     ),
-            )
-          ],
-        ),
+            ),
+          )
+        ],
       ),
     );
   }
