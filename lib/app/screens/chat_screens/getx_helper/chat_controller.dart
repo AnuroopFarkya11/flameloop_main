@@ -20,9 +20,13 @@ class ChatController extends GetxController{
 
   loadUsers() async {
     isLoading.value = true;
-    users.clear();
+    users.value = [];
+    log('Fetching user data');
     var usersData = FirebaseFireStore.to.getAllUsers();
+    log('Fetching user data complete');
     usersData.listen((userSnapshot) {
+      log('UserList: ');
+
       for(var userElement in userSnapshot.docs){
         log('UserList: ${userElement.data()}');
         users.add(

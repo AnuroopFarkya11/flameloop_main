@@ -1,11 +1,11 @@
-class Thought_Model{
+class ThoughtModel{
 
 
   // TODO : add a default user dp
   final String? userProfile;
-  final String thought_text;
+  final String thoughtText;
 
-  Thought_Model({this.userProfile,required this.thought_text});
+  ThoughtModel({this.userProfile,required this.thoughtText});
 
 
 }

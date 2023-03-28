@@ -22,7 +22,7 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 3),
-      () => (FirebaseAuth.instance.currentUser == null)
+      () => (!UserStore.to.isLogin)
           ? Get.toNamed(RoutePaths.getStarted)
           : UserStore.to.profile.userState == AuthUserState.existingUser
               ? Get.toNamed(RoutePaths.recentChatScreen)
