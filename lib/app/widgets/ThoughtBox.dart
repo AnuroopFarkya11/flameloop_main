@@ -16,12 +16,14 @@ class _ThoughtBoxState extends State<ThoughtBox> {
       height: 60,
       child: Row(
         children: [
-          Expanded(child: ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) {
-                return ThoughtBubble();
+          Expanded(child: Container(
+            child: ListView.builder(
+                itemCount: 5,
+                itemBuilder: (context, index) {
+                  return ThoughtBubble();
 
-              }))
+                }),
+          ))
         ],
       ),
     );
