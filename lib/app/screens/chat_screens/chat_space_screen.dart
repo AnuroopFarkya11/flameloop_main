@@ -17,7 +17,6 @@ class ChatSpace extends GetView<ChatSpaceController> {
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         automaticallyImplyLeading: false,
-
         title: ListTile(
           leading: Row(
             mainAxisSize: MainAxisSize.min,
@@ -31,25 +30,31 @@ class ChatSpace extends GetView<ChatSpaceController> {
                   color: Colors.white,
                 ),
               ),
-              CircleAvatar(
-                child: CachedNetworkImage(
-                  imageUrl: controller.state.toUserProfile.value,
-                  imageBuilder: (context, imageProvider) {
-                    return Container(
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(44.r),
-                        image: DecorationImage(
-                          image: imageProvider,
-                          fit: BoxFit.cover,
-                        ),
+              controller.state.toUserProfile.value != ''
+                  ? CircleAvatar(
+                      child: CachedNetworkImage(
+                          imageUrl: controller.state.toUserProfile.value,
+                          imageBuilder: (context, imageProvider) {
+                            return Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(44.r),
+                                image: DecorationImage(
+                                  image: imageProvider,
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                            );
+                          },
+                          errorWidget: (context, url, error) {
+                            return Container();
+                          }),
+                    )
+                  : CircleAvatar(
+                      radius: 22.r,
+                      backgroundImage: const AssetImage(
+                        'assets/setupprofilescreen/avatar.png',
                       ),
-                    );
-                  },
-                  errorWidget: (context, url, error) {
-                    return Container();
-                  },
-                ),
-              ),
+                    )
             ],
           ),
           title: Text(

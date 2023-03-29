@@ -7,15 +7,21 @@ import '../../../utils/date.dart';
 
 Widget chatRightItem(ChatSpaceModel item, bool isSameUser){
   return Container(
-    padding: EdgeInsets.symmetric( horizontal: 10.w, vertical: 10),
+    padding: EdgeInsets.symmetric( horizontal: 10.w, vertical: 2.h),
     alignment: Alignment.topRight,
     child: Stack(
       children: [
         Container(
-          padding: EdgeInsets.only(top: 5.w, bottom: 14.w, right: 8.w, left: 13.w),
+          // padding: EdgeInsets.only(top: 5.w, bottom: 14.w, right: 8.w, left: 13.w),
           constraints: BoxConstraints(
             maxWidth: 230.w,
             maxHeight: 1500.w,
+          ),
+          padding: EdgeInsets.only(
+            bottom: 13.w,
+            top: 5.w,
+            right: 35.w,
+            left: 12.w,
           ),
           decoration: BoxDecoration(
             color: const Color(0xff00C2CB),

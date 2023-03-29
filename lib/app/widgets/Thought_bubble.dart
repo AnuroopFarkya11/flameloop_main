@@ -8,47 +8,44 @@ class ThoughtBubble extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 100,
-      height: 100,
-      child: Stack(alignment: Alignment.center,
+      width: 100.w,
+      height: 100.h,
+      child: Stack(
+        alignment: Alignment.center,
         children: [
-
           Column(
             children: [
               CircleAvatar(
                 radius: 30.r,
-                backgroundImage: const AssetImage("assets/setupprofilescreen/avatar.png",),
-
+                backgroundImage: const AssetImage(
+                  "assets/setupprofilescreen/avatar.png",
+                ),
               ),
-              SizedBox(height: 10.h,),
-              Text("User",style: GoogleFonts.poppins(),),
+              SizedBox(
+                height: 10.h,
+              ),
+              Text(
+                "User",
+                style: GoogleFonts.poppins(),
+              ),
             ],
-
           ),
           Container(
-            constraints: const BoxConstraints(minWidth: 20,maxWidth: 70),
+            constraints: const BoxConstraints(minWidth: 20, maxWidth: 70),
             decoration: const BoxDecoration(
-                color: Colors.blue,
-
-                borderRadius: BorderRadius.all(Radius.circular(12.0))
+              color: Colors.blue,
+              borderRadius: BorderRadius.all(
+                Radius.circular(12.0),
+              ),
             ),
             child: const Padding(
               padding: EdgeInsets.all(8.0),
-              child: Text('Hii! I am anuroop',overflow: TextOverflow.ellipsis,),
+              child: Text(
+                'Hii! I am anuroop',
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
-          // Container(
-          //   width: 80,
-          //   decoration: BoxDecoration(
-          //       color: Theme.of(context).colorScheme.primary,
-          //
-          //       borderRadius: BorderRadius.all(Radius.circular(15.0))
-          //   ),
-          //   child: Padding(
-          //     padding: const EdgeInsets.all(8.0),
-          //     child: Text("I had a good day."),
-          //   ),
-          // )
         ],
       ),
     );

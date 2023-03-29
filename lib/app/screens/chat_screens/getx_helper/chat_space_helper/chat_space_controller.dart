@@ -27,7 +27,7 @@ class ChatSpaceController extends GetxController{
   }
 
   sendMessage() async {
-    String sendContent = textController.text;
+    String sendContent = textController.text.trim();
     textController.clear();
     if(sendContent != ''){
       final content = ChatSpaceModel(
@@ -45,7 +45,7 @@ class ChatSpaceController extends GetxController{
       log(content.messageTm.toIso8601String());
       await FirebaseFireStore.to.updateMessage(
           {
-            "lastMessage": sendContent,
+            "lastMessage": sendContent.trim(),
             "lastMessageBy": state.toUserUid.value,
             "lastMessageTm": content.messageTm.toIso8601String()
           },

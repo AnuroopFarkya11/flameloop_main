@@ -78,7 +78,7 @@ class SelectInterest extends GetView<SetProfileController> {
           onPressed: () async {
             controller.selectSkills();
             await controller.updateUserProfile();
-            Get.toNamed(RoutePaths.recentChatScreen);
+            Get.offAllNamed(RoutePaths.recentChatScreen);
           },
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 12.h),

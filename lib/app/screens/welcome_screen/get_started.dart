@@ -51,7 +51,7 @@ class GetStarted extends StatelessWidget{
         padding: EdgeInsets.all(10.h),
         child: ElevatedButton(
           onPressed: () {
-            Get.toNamed(RoutePaths.mobileAuthScreen);
+            Get.offAndToNamed(RoutePaths.mobileAuthScreen);
           },
           child: const Text(
             "Get Started",

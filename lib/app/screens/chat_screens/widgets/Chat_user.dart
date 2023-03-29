@@ -52,7 +52,8 @@ class ChatUser extends GetView<ChatController> {
         ),
         child: ListTile(
           leading: CircleAvatar(
-            child: CachedNetworkImage(
+            child: controller.users[index].photoId != '' ?
+            CachedNetworkImage(
               imageUrl: controller.users[index].photoId,
               imageBuilder: (context, imageProvider){
                 return Container(
@@ -68,7 +69,12 @@ class ChatUser extends GetView<ChatController> {
               errorWidget: (context, url, error){
                 return Container();
               },
-            )
+            ): CircleAvatar(
+                radius: 25.r,
+                backgroundImage: const AssetImage(
+                  'assets/setupprofilescreen/avatar.png',
+                )
+            ),
           ),
           title: Text(
             controller.users[index].username,

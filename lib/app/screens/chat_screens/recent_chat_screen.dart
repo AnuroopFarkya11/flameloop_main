@@ -125,12 +125,8 @@ class RecentChatScreen extends GetView<ChatController> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-
-        },
-        child: const Icon(
-          Icons.chat
-        ),
+        onPressed: () {},
+        child: const Icon(Icons.chat),
       ),
     );
   }
