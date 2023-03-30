@@ -1,15 +1,12 @@
 import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import 'app/screens/chat_screens/message_screen.dart';
 import 'app/services/firebase.dart';
 import 'app/services/storage.dart';
 import 'app/services/user.dart';

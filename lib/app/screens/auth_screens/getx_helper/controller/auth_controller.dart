@@ -1,5 +1,7 @@
+import 'dart:developer';
 
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../../services/firebase.dart';
@@ -26,19 +28,43 @@ class AuthController extends GetxController {
                 fourthNumber.text +
                 fifthNumber.text +
                 sixthNumber.text)
-            .length == 6) {
+            .length ==
+        6) {
       isLoading.value = true;
-      var response = await FirebaseFireStore.to.verifySMSCode(
-          phoneNumber.text,
-          firstNumber.text +
-              secondNumber.text +
-              thirdNumber.text +
-              fourthNumber.text +
-              fifthNumber.text +
-              sixthNumber.text);
-      isLoading.value = false;
-      return response;
-    }else{
+      try {
+        var response = await FirebaseFireStore.to.verifySMSCode(
+            phoneNumber.text,
+            firstNumber.text +
+                secondNumber.text +
+                thirdNumber.text +
+                fourthNumber.text +
+                fifthNumber.text +
+                sixthNumber.text);
+        isLoading.value = false;
+        return response;
+      } catch (error) {
+        isLoading.value = false;
+        log('Error caught: $error');
+        Get.snackbar(
+          "Auth Failed",
+          'The input OTP is either invalid or expired',
+          snackStyle: SnackStyle.FLOATING,
+          icon: const Icon(
+            Icons.person,
+            color: Color(0xff28282B),
+          ),
+          snackPosition: SnackPosition.BOTTOM,
+          backgroundColor: Colors.grey[200],
+          borderRadius: 10.r,
+          margin: EdgeInsets.all(10.w),
+          padding: EdgeInsets.all(15.w),
+          colorText: const Color(0xff28282B),
+          duration: const Duration(seconds: 4),
+          isDismissible: true,
+          forwardAnimationCurve: Curves.easeOutBack,
+        );
+      }
+    } else {
       return false;
     }
   }

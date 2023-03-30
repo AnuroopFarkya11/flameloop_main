@@ -1,4 +1,3 @@
-
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -19,14 +18,14 @@ class InterestTile extends GetView<SetProfileController> {
         () => Container(
           padding: EdgeInsets.symmetric(horizontal: 13.w, vertical: 10.w),
           decoration: BoxDecoration(
-              color: Colors.white,
-              border: Border.all(
-                color: controller.skillsBool[index]
-                    ? Colors.orange
-                    : Colors.white,
-                width: 4,
-              ),
-              borderRadius: BorderRadius.circular(20)),
+            color: Colors.white,
+            border: Border.all(
+              color:
+                  controller.skillsBool[index] ? Colors.orange : Colors.white,
+              width: 4,
+            ),
+            borderRadius: BorderRadius.circular(20),
+          ),
           child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -41,7 +40,7 @@ class InterestTile extends GetView<SetProfileController> {
               Text(controller.interestList[index].name)
             ],
           ),
-        )
+        ),
       ),
     );
   }

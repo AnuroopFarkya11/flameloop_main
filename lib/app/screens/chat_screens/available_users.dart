@@ -1,16 +1,16 @@
-import 'dart:ffi';
-
-import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
+import 'package:flameloop/app/screens/chat_screens/getx_helper/recent_chat_helper/recent_chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
+import 'package:flameloop/app/screens/chat_screens/widgets/available_user_tile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class AvailableUsers extends GetView<ChatController> {
+class AvailableUsers extends GetView<RecentChatController> {
   const AvailableUsers({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
@@ -20,7 +20,6 @@ class AvailableUsers extends GetView<ChatController> {
           style: TextStyle(color: Colors.white),
         ),
         elevation: 0,
-        automaticallyImplyLeading: false,
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: Container(
@@ -64,7 +63,7 @@ class AvailableUsers extends GetView<ChatController> {
                           shrinkWrap: true,
                           physics: const BouncingScrollPhysics(),
                           itemBuilder: (BuildContext context, int index) {
-                            return ChatUser(index: index);
+                            return AvailableUserTile(index: index);
                           },
                         ),
                       ),

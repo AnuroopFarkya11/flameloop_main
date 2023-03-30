@@ -17,7 +17,7 @@ class ContentStrings{
   //CONTENT : ENTER OTP SCREEN
   static String getOtpScreenStr1 = "Hey 👋";
   static String getOtpScreenStr2 = "Enter Your OTP Here";
-  static String getOtpScreenStr3 = "Resend Code";
+  static String getOtpScreenStr3 = "Click to Resend Code";
   static String getOtpScreenStr4 = "Didn't Receive the code yet?Click on resend in 0:20 sec ";
 
   //CONTENT : SET UP PROFILE SCREEN

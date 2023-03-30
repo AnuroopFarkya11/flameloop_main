@@ -17,7 +17,10 @@ class MobileAuthScreen extends GetView<AuthController> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        toolbarHeight: 20.h,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
+        elevation: 0,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
@@ -65,14 +68,26 @@ class MobileAuthScreen extends GetView<AuthController> {
                       await controller.handleSignInByPhone();
                       Get.toNamed(RoutePaths.otpVerificationScreen);
                     } else {
-                      Fluttertoast.showToast(
-                          msg: "Enter a valid Phone Number",
-                          toastLength: Toast.LENGTH_SHORT,
-                          gravity: ToastGravity.BOTTOM,
-                          timeInSecForIosWeb: 3,
-                          backgroundColor: Colors.grey[300],
-                          textColor: Colors.black,
-                          fontSize: 16.sp);
+                      Get.snackbar(
+                        "Mobile Auth",
+                        "Please Enter a valid phone number",
+                        snackStyle: SnackStyle.FLOATING,
+                        icon: const Icon(
+                          Icons.person,
+                          color: Color(0xff28282B),
+                        ),
+                        snackPosition: SnackPosition.BOTTOM,
+                        dismissDirection: DismissDirection.horizontal,
+                        backgroundColor: Colors.grey[200],
+                        borderRadius: 10.r,
+                        margin: EdgeInsets.all(10.w),
+                        padding: EdgeInsets.all(15.w),
+                        colorText: const Color(0xff28282B),
+                        duration: const Duration(seconds: 4),
+                        isDismissible: true,
+                        forwardAnimationCurve: Curves.easeOutBack,
+
+                      );
                     }
                   },
                   child: Container(

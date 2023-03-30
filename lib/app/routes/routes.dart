@@ -2,7 +2,7 @@ import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/auth_screens/otp_verification_screen.dart';
 import 'package:flameloop/app/screens/chat_screens/available_users.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_space_helper/chat_space_library.dart';
-import 'package:flameloop/app/screens/chat_screens/message_screen.dart';
+import 'package:flameloop/app/screens/chat_screens/getx_helper/recent_chat_helper/recent_chat_library.dart';
 import 'package:flameloop/app/screens/chat_screens/recent_chat_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/binding.dart';
 import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.dart';
@@ -14,7 +14,6 @@ import 'package:get/get.dart';
 import '../screens/auth_screens/getx_helper/auth_binding.dart';
 import '../screens/auth_screens/mobile_auth_screen.dart';
 import '../screens/chat_screens/chat_space_screen.dart';
-import '../screens/chat_screens/getx_helper/chat_binding.dart';
 
 class RouteClass {
   static String getSlashScreen() => RoutePaths.splashScreen;
@@ -69,7 +68,7 @@ class RouteClass {
     GetPage(
       name: RoutePaths.recentChatScreen,
       page: () => const RecentChatScreen(),
-      binding: ChatBinding()
+      binding: ChatRoomBinding()
     ),
 
     GetPage(
@@ -78,16 +77,11 @@ class RouteClass {
       binding: ChatSpaceBinding()
     ),
 
-    GetPage(
-        name: RoutePaths.messageScreen,
-        page: () => MessageScreen(),
-
-    ),
 
     GetPage(
       name: RoutePaths.availableUserScreen,
-      page: () => AvailableUsers(),
-
+      page: () => const AvailableUsers(),
+      binding: ChatRoomBinding()
     ),
   ];
 }

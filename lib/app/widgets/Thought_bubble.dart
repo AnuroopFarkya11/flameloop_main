@@ -31,16 +31,16 @@ class ThoughtBubble extends StatelessWidget {
             ],
           ),
           Container(
-            constraints: const BoxConstraints(minWidth: 20, maxWidth: 70),
-            decoration: const BoxDecoration(
+            constraints: BoxConstraints(minWidth: 20.w, maxWidth: 70.h),
+            decoration: BoxDecoration(
               color: Colors.blue,
               borderRadius: BorderRadius.all(
-                Radius.circular(12.0),
+                Radius.circular(12.r),
               ),
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Text(
+            child: Padding(
+              padding: EdgeInsets.all(8.r),
+              child: const Text(
                 'Hii! I am anuroop',
                 overflow: TextOverflow.ellipsis,
               ),

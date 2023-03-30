@@ -7,7 +7,7 @@ import '../../../utils/date.dart';
 
 Widget chatLeftItem(ChatSpaceModel item, bool isSameUser){
   return Container(
-    padding: EdgeInsets.symmetric( horizontal: 5.w, vertical: 6.h),
+    padding: EdgeInsets.symmetric( horizontal: 8.w),
     child: Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -35,7 +35,7 @@ Widget chatLeftItem(ChatSpaceModel item, bool isSameUser){
                   right: 35.w,
                   left: 12.w,
               ),
-              margin: EdgeInsets.symmetric(vertical: 6.w),
+              margin: EdgeInsets.symmetric(vertical: 3.w),
               constraints: BoxConstraints(
                 maxWidth: 230.w,
                 maxHeight: 1500.w,
