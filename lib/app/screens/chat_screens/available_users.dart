@@ -4,6 +4,7 @@ import 'package:flameloop/app/screens/chat_screens/widgets/available_user_tile.d
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 class AvailableUsers extends GetView<RecentChatController> {
   const AvailableUsers({Key? key}) : super(key: key);
@@ -22,59 +23,69 @@ class AvailableUsers extends GetView<RecentChatController> {
         elevation: 0,
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
-      body: Container(
-        color: Theme.of(context).colorScheme.primary,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(
-                  left: 10, top: 10, right: 10, bottom: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40.0)),
-              child: ListTile(
-                leading: const Icon(Icons.search),
-                tileColor: Colors.white,
-                title: TextField(
-                  // TODO: search Controller
-                  autofocus: true,
-                  decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "Search",
-                    hintStyle: GoogleFonts.poppins()
-                  ),
-                )
+      body: SmartRefresher(
+        controller: controller.refreshController1,
+        enablePullDown: true,
+        enablePullUp: false,
+        onRefresh: controller.onRefreshChatRooms,
+        header: const WaterDropMaterialHeader(),
+
+
+        // onRefresh: ,
+        child: Container(
+          color: Theme.of(context).colorScheme.primary,
+          margin: const EdgeInsets.symmetric(horizontal: 15),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                margin: const EdgeInsets.only(
+                    left: 10, top: 10, right: 10, bottom: 20),
+                decoration: BoxDecoration(
+                    color: Colors.white,
+                    borderRadius: BorderRadius.circular(40.0)),
+                child: ListTile(
+                  leading: const Icon(Icons.search),
+                  tileColor: Colors.white,
+                  title: TextField(
+                    // TODO: search Controller
+                    autofocus: true,
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Search",
+                      hintStyle: GoogleFonts.poppins()
+                    ),
+                  )
+                ),
               ),
-            ),
-            Text(
-              "Releated User",
-              style: GoogleFonts.poppins(
-                  color: Colors.white, fontWeight: FontWeight.w500),
-            ),
-            Obx(
-              () => !controller.isLoading.value
-                  ? Expanded(
-                      child: Container(
-                        color: Theme.of(context).colorScheme.primary,
-                        child: ListView.builder(
-                          itemCount: controller.users.length,
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            return AvailableUserTile(index: index);
-                          },
+              Text(
+                "Releated User",
+                style: GoogleFonts.poppins(
+                    color: Colors.white, fontWeight: FontWeight.w500),
+              ),
+              Obx(
+                () => !controller.isLoading.value
+                    ? Expanded(
+                        child: Container(
+                          color: Theme.of(context).colorScheme.primary,
+                          child: ListView.builder(
+                            itemCount: controller.users.length,
+                            shrinkWrap: true,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (BuildContext context, int index) {
+                              return AvailableUserTile(index: index);
+                            },
+                          ),
+                        ),
+                      )
+                    : const Center(
+                        child: CircularProgressIndicator(
+                          color: Colors.white,
                         ),
                       ),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
-                      ),
-                    ),
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );

@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: RoutePaths.splashScreen,
+        initialRoute: RoutePaths.recentChatScreen,
         getPages: RouteClass.routes,
       ),
     );

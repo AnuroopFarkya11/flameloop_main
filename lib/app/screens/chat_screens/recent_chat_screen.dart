@@ -42,6 +42,9 @@ class RecentChatScreen extends GetView<RecentChatController> {
                     90.h,
                   ),
                   child: const ThoughtBox()),
+              actions: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.group,color: Theme.of(context).colorScheme.primary,))
+              ],
             ),
             SliverToBoxAdapter(
               child: Obx(

@@ -4,6 +4,7 @@ import 'package:flameloop/app/screens/chat_screens/available_users.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_space_helper/chat_space_library.dart';
 import 'package:flameloop/app/screens/chat_screens/getx_helper/recent_chat_helper/recent_chat_library.dart';
 import 'package:flameloop/app/screens/chat_screens/recent_chat_screen.dart';
+import 'package:flameloop/app/screens/home_screens/home_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/getx_helper/binding.dart';
 import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.dart';
 import 'package:flameloop/app/screens/user_profile_setup/setup_profile_screen.dart';
@@ -29,6 +30,9 @@ class RouteClass {
   static String getMessageScreen() => RoutePaths.messageScreen;
 
   static String getAvailableScreen() => RoutePaths.availableUserScreen;
+
+  static String getHomeScreen() => RoutePaths.availableUserScreen;
+
 
 
   static List<GetPage> routes = [
@@ -82,6 +86,11 @@ class RouteClass {
       name: RoutePaths.availableUserScreen,
       page: () => const AvailableUsers(),
       binding: ChatRoomBinding()
+    ),
+    GetPage(
+        name: RoutePaths.homeScreen,
+        page: () => const HomeScreen(),
+
     ),
   ];
 }

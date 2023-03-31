@@ -18,7 +18,10 @@ class AuthController extends GetxController {
   TextEditingController sixthNumber = TextEditingController();
 
   handleSignInByPhone() async {
-    await FirebaseFireStore.to.verifyPhoneNumber(phoneNumber.text);
+
+
+      await FirebaseFireStore.to.verifyPhoneNumber(phoneNumber.text);
+
   }
 
   validateOtp() async {
