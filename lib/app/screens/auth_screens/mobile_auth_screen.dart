@@ -1,10 +1,9 @@
-import 'package:flameloop/app/utils/ContentStrings.dart';
-import 'package:flameloop/app/widgets/input_phone_number.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/screens/auth_screens/getx_helper/controller/auth_controller.dart';
+import 'package:flameloop/app/utils/ContentStrings.dart';
+import 'package:flameloop/app/widgets/input_phone_number.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
@@ -38,18 +37,22 @@ class MobileAuthScreen extends GetView<AuthController> {
             ),
             Text(
               ContentStrings.getMobileScreenStr1,
-              style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
+              style:
+                  GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
             ),
             SizedBox(
               height: 13.h,
             ),
 
             // Enter your mobile number
-            Text(ContentStrings.getMobileScreenStr2,
-                style: GoogleFonts.poppins(
-                    color: Colors.white,
-                    fontSize: 25.sp,
-                    fontWeight: FontWeight.w700)),
+            Text(
+              ContentStrings.getMobileScreenStr2,
+              style: GoogleFonts.poppins(
+                color: Colors.white,
+                fontSize: 25.sp,
+                fontWeight: FontWeight.w700,
+              ),
+            ),
 
             SizedBox(
               height: 30.h,
@@ -86,7 +89,6 @@ class MobileAuthScreen extends GetView<AuthController> {
                         duration: const Duration(seconds: 4),
                         isDismissible: true,
                         forwardAnimationCurve: Curves.easeOutBack,
-
                       );
                     }
                   },
@@ -106,10 +108,10 @@ class MobileAuthScreen extends GetView<AuthController> {
             Center(
               child: Text(
                 ContentStrings.getMobileScreenStr3,
-                style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
+                style:
+                    GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
               ),
             ),
-
           ],
         ),
       ),

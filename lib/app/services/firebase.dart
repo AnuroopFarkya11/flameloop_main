@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flameloop/app/models/community_model/community_model.dart';
 import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
 import 'package:flameloop/app/services/user.dart';
 import 'package:get/get.dart';
@@ -157,14 +158,14 @@ class FirebaseFireStore extends GetxController {
         .snapshots();
   }
 
-  Future<QuerySnapshot> getChatRoom() async {
-    return await fireStore
+  Stream<QuerySnapshot> getChatRoom() {
+    return  fireStore
         .collection("chats")
         .where("users", arrayContains: UserStore.to.uid)
         .where("lastMessage", isNotEqualTo: '')
         .orderBy("lastMessage", descending: false)
-        .orderBy("lastMessageTm", descending: false)
-        .get();
+        .orderBy("lastMessageTm", descending: true)
+        .snapshots();
   }
 
   Future<void> createChatRoom(ChatRoomModel chatRoom) async {
@@ -176,4 +177,25 @@ class FirebaseFireStore extends GetxController {
           .set(chatRoom.toJson());
     }
   }
+
+  Stream<QuerySnapshot> getAllCommunity() {
+    return  fireStore
+        .collection("community")
+        .where("lastMessage", isNotEqualTo: '')
+        .orderBy("lastMessage", descending: false)
+        .orderBy("lastMessageTm", descending: true)
+        .snapshots();
+  }
+
+  Future<void> createCommunity(CommunityModel community) async {
+    final doc = await fireStore.collection("community").doc(community.communityId).get();
+    if (!doc.exists) {
+      String docId = fireStore.collection("community").doc().id;
+      await fireStore
+          .collection("community")
+          .doc(docId)
+          .set(community.copyWith(communityId: docId).toJson());
+    }
+  }
+
 }

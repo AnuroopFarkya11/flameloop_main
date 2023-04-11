@@ -82,7 +82,6 @@ class RouteClass {
       binding: ChatSpaceBinding()
     ),
 
-
     GetPage(
       name: RoutePaths.availableUserScreen,
       page: () => const AvailableUsers(),

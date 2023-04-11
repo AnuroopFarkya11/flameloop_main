@@ -11,7 +11,6 @@ class ChatRoomModel with _$ChatRoomModel{
     required List<String> users,
     required List<String> usersProfile,
     required List<String> usersName,
-    ///TODO: Have to add the pinned chat feature
     required String lastMessage,
     required String lastMessageBy,
     required DateTime lastMessageTm,

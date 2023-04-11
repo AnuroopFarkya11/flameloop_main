@@ -1,8 +1,6 @@
 import 'dart:developer';
 
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flameloop/app/models/enum/phone_auth_user_state.dart';
 import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flameloop/app/routes/routes.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: RoutePaths.workScreen,
+        initialRoute: RoutePaths.recentChatScreen,
         getPages: RouteClass.routes,
       ),
     );
