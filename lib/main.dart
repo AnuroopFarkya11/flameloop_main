@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
     log(UserStore.to.profile.toString());
     return ScreenUtilInit(
       builder: (context, child) => GetMaterialApp(
-        debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: true,
         title: 'Flutter Demo',
         theme: ThemeData(
           colorScheme: ColorScheme.fromSeed(
@@ -45,7 +45,7 @@ class MyApp extends StatelessWidget {
             ),
           ),
         ),
-        initialRoute: RoutePaths.recentChatScreen,
+        initialRoute: RoutePaths.splashScreen,
         getPages: RouteClass.routes,
       ),
     );

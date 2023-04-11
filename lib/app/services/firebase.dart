@@ -157,14 +157,14 @@ class FirebaseFireStore extends GetxController {
         .snapshots();
   }
 
-  Future<QuerySnapshot> getChatRoom() async {
-    return await fireStore
+  Stream<QuerySnapshot> getChatRoom() {
+    return  fireStore
         .collection("chats")
         .where("users", arrayContains: UserStore.to.uid)
         .where("lastMessage", isNotEqualTo: '')
         .orderBy("lastMessage", descending: false)
-        .orderBy("lastMessageTm", descending: false)
-        .get();
+        .orderBy("lastMessageTm", descending: true)
+        .snapshots();
   }
 
   Future<void> createChatRoom(ChatRoomModel chatRoom) async {

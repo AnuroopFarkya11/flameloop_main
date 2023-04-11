@@ -24,14 +24,11 @@ class AvailableUsers extends GetView<RecentChatController> {
         backgroundColor: Theme.of(context).colorScheme.primary,
       ),
       body: SmartRefresher(
-        controller: controller.refreshController1,
+        controller: controller.refreshController2,
         enablePullDown: true,
         enablePullUp: false,
-        onRefresh: controller.onRefreshChatRooms,
+        onRefresh: controller.onRefreshLoadUser,
         header: const WaterDropMaterialHeader(),
-
-
-        // onRefresh: ,
         child: Container(
           color: Theme.of(context).colorScheme.primary,
           margin: const EdgeInsets.symmetric(horizontal: 15),
@@ -43,7 +40,8 @@ class AvailableUsers extends GetView<RecentChatController> {
                     left: 10, top: 10, right: 10, bottom: 20),
                 decoration: BoxDecoration(
                     color: Colors.white,
-                    borderRadius: BorderRadius.circular(40.0)),
+                    borderRadius: BorderRadius.circular(40.0),
+                ),
                 child: ListTile(
                   leading: const Icon(Icons.search),
                   tileColor: Colors.white,
