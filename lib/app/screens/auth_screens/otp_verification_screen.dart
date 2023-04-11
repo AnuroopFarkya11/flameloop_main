@@ -20,7 +20,10 @@ class OtpVerificationScreen extends GetView<AuthController> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        toolbarHeight: 20.h,
+        backgroundColor: Theme.of(context).colorScheme.primary,
+        automaticallyImplyLeading: false,
+        elevation: 0,
       ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 15.w, vertical: 10.h),
@@ -33,12 +36,9 @@ class OtpVerificationScreen extends GetView<AuthController> {
               selectedColor: Colors.white,
               unselectedColor: Colors.white24,
             ),
-
-            // Content:  Hey
             SizedBox(
               height: 20.h,
             ),
-
             Text(
               ContentStrings.getOtpScreenStr1,
               style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
@@ -46,24 +46,20 @@ class OtpVerificationScreen extends GetView<AuthController> {
             SizedBox(
               height: 15.h,
             ),
-
-            // Enter your otp here
             Text(ContentStrings.getOtpScreenStr2,
                 style: GoogleFonts.poppins(
                     color: Colors.white,
                     fontSize: 25.sp,
-                    fontWeight: FontWeight.w700)),
-
+                    fontWeight: FontWeight.w700,
+                ),
+            ),
             SizedBox(
               height: 20.h,
             ),
-
             const GetOtpTextField(),
-
             SizedBox(
               height: 20.h,
             ),
-
             Obx(
               () => Padding(
                 padding: EdgeInsets.symmetric(vertical: 10.h),
@@ -71,9 +67,9 @@ class OtpVerificationScreen extends GetView<AuthController> {
                     onPressed: () async {
                       if (!controller.isLoading.value && await controller.validateOtp()) {
                         if(UserStore.to.profile.userState == AuthUserState.newUser){
-                          Get.toNamed(RoutePaths.setUpProfile);
+                          Get.offAllNamed(RoutePaths.setUpProfile);
                         }else{
-                          Get.toNamed(RoutePaths.recentChatScreen);
+                          Get.offAllNamed(RoutePaths.recentChatScreen);
                         }
                       }
                     },
@@ -91,9 +87,14 @@ class OtpVerificationScreen extends GetView<AuthController> {
             // Content Line :Resend code
             Align(
               alignment: Alignment.centerRight,
-              child: Text(
-                ContentStrings.getOtpScreenStr3,
-                style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
+              child: GestureDetector(
+                onTap: () {
+                  controller.decrementSeconds();
+                },
+                child: Text(
+                  ContentStrings.getOtpScreenStr3,
+                  style: GoogleFonts.poppins(color: Colors.white60, fontSize: 15.sp),
+                ),
               ),
             ),
             SizedBox(

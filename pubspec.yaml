@@ -55,6 +55,7 @@ dependencies:
   shared_preferences: ^2.0.13
   step_progress_indicator: ^1.0.2
   libphonenumber: ^2.0.2
+  lottie: ^2.3.1
 
 dev_dependencies:
   flutter_test:
@@ -84,6 +85,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/splashscreen/
+    - assets/
     - assets/getstartedscreen/
     - assets/phonenumberscreen/
     - assets/setupprofilescreen/

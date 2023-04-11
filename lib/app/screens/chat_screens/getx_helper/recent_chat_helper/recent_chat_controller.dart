@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
 import '../../../../models/chat_room_model/chat_room_model.dart';
 import '../../../../models/users/user_model.dart';
+import '../../../../routes/route_path.dart';
 import '../../../../services/firebase.dart';
 import '../../../../services/user.dart';
 import 'recent_chat_state.dart';
@@ -10,28 +13,37 @@ import 'recent_chat_state.dart';
 class RecentChatController extends GetxController{
   final state = RecentChatState();
   var index = 0.obs;
+  RxList<UserModel> users = <UserModel>[].obs;
   final myUserId = UserStore.to.uid;
   var isLoading = true.obs;
 
-  final RefreshController refreshController =RefreshController(initialRefresh: true);
+  final RefreshController refreshController1 = RefreshController(initialRefresh: true);
+  final RefreshController refreshController2 = RefreshController(initialRefresh: true);
 
-  onRefresh(){
-    asyncLoadData().then((_) =>
-        refreshController.refreshCompleted(resetFooterState: true)
+  onRefreshChatRooms(){
+    loadUsers().then((_) =>
+        refreshController1.refreshCompleted(resetFooterState: true)
     );
   }
 
-  void onLoading(){
-    // asyncLoadData().then((_) =>
-        refreshController.loadComplete();
-    // );
+  onRefreshLoadUser(){
+    asyncLoadData().then((_) =>
+        refreshController2.refreshCompleted(resetFooterState: true)
+    );
   }
+
+  // void onLoading(){
+  //   // asyncLoadData().then((_) =>
+  //       refreshController1.loadComplete();
+  //   // );
+  // }
 
 
   @override
   Future<void> onReady() async {
     super.onReady();
     await asyncLoadData();
+    await loadUsers();
   }
   
   asyncLoadData() async {
@@ -59,7 +71,49 @@ class RecentChatController extends GetxController{
       Iterable otherUserReversed = state.otherUser.reversed;
       state.chatRoomList.value = isReversed.toList() as List<ChatRoomModel>;
       state.otherUser.value = otherUserReversed.toList() as List<UserModel>;
+      log('This is the list of chat rooms: ${state.chatRoomList}');
+
       isLoading.value = false;
+    }
+  }
+
+  loadUsers() async {
+    isLoading.value = true;
+    users.value = [];
+    log('Fetching user data');
+    var usersData = FirebaseFireStore.to.getAllUsers();
+    log('Fetching user data complete');
+    usersData.listen((userSnapshot) {
+      log('UserList: ');
+
+      for(var userElement in userSnapshot.docs){
+        log('UserList: ${userElement.data()}');
+        users.add(
+            UserModel.fromJson(userElement.data() as Map<String, dynamic>)
+        );
+      }
+    });
+    isLoading.value = false;
+  }
+
+  createChatRoom(ChatRoomModel chatRoomModel, UserModel otherUser) async {
+    await FirebaseFireStore.to.createChatRoom(chatRoomModel);
+    Get.toNamed(
+        RoutePaths.chatScreen,
+        parameters: {
+          "chatRoomId": chatRoomModel.chatRoomId,
+          "toUserProfile": otherUser.photoId,
+          "toUserName": otherUser.username,
+          "toUserUid": otherUser.uid
+        }
+    );
+  }
+
+  generateChatRoomId(String myUserUid, String otherUserId) {
+    if (myUserUid.substring(0, 1).codeUnitAt(0) > otherUserId.substring(0, 1).codeUnitAt(0)) {
+      return "$otherUserId\_$myUserUid";
+    } else {
+      return "$myUserUid\_$otherUserId";
     }
   }
 }

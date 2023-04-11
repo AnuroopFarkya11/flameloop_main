@@ -11,8 +11,10 @@ class HomeScreen extends GetView {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).colorScheme.primary,
-        title: Text("Work",style: GoogleFonts.poppins(),),
-
+        title: Text(
+          "Work",
+          style: GoogleFonts.poppins(),
+        ),
         actions: [
           Padding(
             //TODO WHATSAPP ICON
@@ -25,13 +27,38 @@ class HomeScreen extends GetView {
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: IconButton(onPressed: (){
-              Get.toNamed(RoutePaths.messageScreen);
-            },icon: Icon(Icons.messenger_outline_rounded),),
+            child: IconButton(
+              onPressed: () {
+                Get.toNamed(RoutePaths.messageScreen);
+              },
+              icon: Icon(Icons.messenger_outline_rounded),
+            ),
           ),
         ],
       ),
-      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add),backgroundColor: Theme.of(context).colorScheme.primary,),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(Icons.add),
+        backgroundColor: Theme.of(context).colorScheme.primary,
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.connect_without_contact_outlined),
+                label: "Network",
+            ),
+            BottomNavigationBarItem(icon: Icon(Icons.work), label: "Work"),
+
+            BottomNavigationBarItem(
+                icon: Icon(Icons.notifications_active_rounded),
+                label: "Nostification"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
+
+          ],
+          iconSize: 20.0,
+          selectedItemColor: Colors.indigo,
+          type: BottomNavigationBarType.fixed),
     );
   }
 }

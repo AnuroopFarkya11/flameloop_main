@@ -39,7 +39,8 @@ class FirebaseFireStore extends GetxController {
   Stream<QuerySnapshot> getAllUsers() {
     return fireStore
         .collection("Users")
-        // .where("uid", isNotEqualTo: UserStore.to.uid)
+        .where("uid", isNotEqualTo: UserStore.to.uid)
+        .where("userState", isEqualTo: 'existingUser')
         .snapshots();
   }
 
@@ -157,11 +158,13 @@ class FirebaseFireStore extends GetxController {
   }
 
   Future<QuerySnapshot> getChatRoom() async {
-    var data = fireStore
+    return await fireStore
         .collection("chats")
-        .where("users", arrayContains: UserStore.to.uid);
-
-    return data.orderBy("lastMessageTm", descending: false).get();
+        .where("users", arrayContains: UserStore.to.uid)
+        .where("lastMessage", isNotEqualTo: '')
+        .orderBy("lastMessage", descending: false)
+        .orderBy("lastMessageTm", descending: false)
+        .get();
   }
 
   Future<void> createChatRoom(ChatRoomModel chatRoom) async {

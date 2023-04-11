@@ -1,76 +1,152 @@
-import 'package:flameloop/app/screens/chat_screens/getx_helper/chat_controller.dart';
+import 'package:flameloop/app/screens/chat_screens/getx_helper/recent_chat_helper/recent_chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lottie/lottie.dart';
+import 'package:pull_to_refresh/pull_to_refresh.dart';
 
+import '../../routes/route_path.dart';
+import 'widgets/ThoughtBox.dart';
 
-class RecentChatScreen extends GetView<ChatController> {
+class RecentChatScreen extends GetView<RecentChatController> {
   const RecentChatScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).colorScheme.primary,
-      appBar: AppBar(
-        iconTheme: const IconThemeData(color: Colors.white),
-        title: const Text(
-          "Start new chat",
-          style: TextStyle(color: Colors.white),
-        ),
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Theme.of(context).colorScheme.primary,
-      ),
-      body: Container(
-        color: Theme.of(context).colorScheme.primary,
-        margin: const EdgeInsets.symmetric(horizontal: 15),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              margin: const EdgeInsets.only(
-                  left: 10, top: 10, right: 10, bottom: 20),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(40.0)),
-              child: ListTile(
-                leading: const Icon(Icons.search),
-                tileColor: Colors.white,
-                title: Text(
-                  "Search",
-                  style: GoogleFonts.poppins(),
-                ),
+      backgroundColor: Colors.grey[100],
+      body: SmartRefresher(
+        controller: controller.refreshController1,
+        enablePullDown: true,
+        enablePullUp: false,
+        onRefresh: controller.onRefreshChatRooms,
+        header: const WaterDropMaterialHeader(),
+        child: CustomScrollView(
+          slivers: [
+            SliverAppBar(
+              automaticallyImplyLeading: false,
+              title: Text(
+                "Messages",
+                style: GoogleFonts.poppins(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 18.sp,
+                    color: Colors.black),
               ),
+              elevation: 0,
+              backgroundColor: Colors.grey[200],
+              bottom: PreferredSize(
+                  preferredSize: Size(
+                    MediaQuery.of(context).size.width,
+                    90.h,
+                  ),
+                  child: const ThoughtBox()),
+              actions: [
+                IconButton(onPressed: (){}, icon: Icon(Icons.group,color: Theme.of(context).colorScheme.primary,))
+              ],
             ),
-            Text(
-              "Releated User",
-              style: GoogleFonts.poppins(
-                  color: Colors.white, fontWeight: FontWeight.w500),
-            ),
-            Obx(
-              () => !controller.isLoading.value
-                  ? Expanded(
-                      child: Container(
-                        color: Theme.of(context).colorScheme.primary,
-                        child: ListView.builder(
-                          itemCount: controller.users.length,
-                          shrinkWrap: true,
-                          physics: const BouncingScrollPhysics(),
-                          itemBuilder: (BuildContext context, int index) {
-                            return ChatUser(index: index);
-                          },
+            SliverToBoxAdapter(
+              child: Obx(
+                () => Container(
+                  height: MediaQuery.of(context).size.height,
+                  decoration: BoxDecoration(
+                    color: Theme.of(context).colorScheme.primary,
+                    borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(15.r),
+                      topRight: Radius.circular(15.r),
+                    ),
+                  ),
+                  child: Column(
+                    children: [
+                      Container(
+                        alignment: Alignment.center,
+                        decoration: BoxDecoration(
+                          color: Theme.of(context).colorScheme.primary,
+                          borderRadius: BorderRadius.only(
+                            topLeft: Radius.circular(15.r),
+                            topRight: Radius.circular(15.r),
+                          ),
+                        ),
+                        child: Container(
+                          width: 100.w,
+                          height: 3.h,
+                          margin: EdgeInsets.only(top: 15.w),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(40.r),
+                          ),
                         ),
                       ),
-                    )
-                  : const Center(
-                      child: CircularProgressIndicator(
-                        color: Colors.white,
+                      Container(
+                        alignment: Alignment.topLeft,
+                        margin: EdgeInsets.only(top: 15.w, left: 15.w),
+                        decoration: BoxDecoration(
+                          color: Colors.transparent,
+                          borderRadius: BorderRadius.circular(40.r),
+                        ),
+                        child: Text(
+                          'Recent Chats',
+                          style: GoogleFonts.poppins(
+                            color: Colors.white,
+                            fontSize: 18.sp,
+                          ),
+                        ),
                       ),
-                    ),
+                      controller.isLoading.value
+                          ? const Center(
+                              child: CircularProgressIndicator(
+                                color: Colors.white,
+                              ),
+                            )
+                          : controller.state.chatRoomList.isNotEmpty
+                              ? ListView.builder(
+                                  itemCount:
+                                      controller.state.chatRoomList.length,
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    if (controller.state.chatRoomList.isNotEmpty && controller.state.otherUser.isNotEmpty) {
+                                      var item = controller.state.chatRoomList[index];
+                                      var otherUser = controller.state.otherUser[index];
+                                      return ChatUser(item: item, otherUser: otherUser);
+                                    } else {
+                                      return const CircularProgressIndicator();
+                                    }
+                                  })
+                              : Container(
+                                  margin: EdgeInsets.only(top: 80.h),
+                                  child: Column(
+                                    children: [
+                                      Lottie.asset('assets/no_recent_chat.json',
+                                          height: 200.h, repeat: true),
+                                      SizedBox(
+                                        height: 20.h,
+                                      ),
+                                      Text(
+                                        'No Recent Chats',
+                                        style: GoogleFonts.poppins(
+                                          color: Colors.white,
+                                          fontSize: 18.sp,
+                                        ),
+                                      )
+                                    ],
+                                  ),
+                                ),
+                    ],
+                  ),
+                ),
+              ),
             )
           ],
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Get.toNamed(RoutePaths.availableUserScreen);
+        },
+        child: const Icon(Icons.chat),
       ),
     );
   }
