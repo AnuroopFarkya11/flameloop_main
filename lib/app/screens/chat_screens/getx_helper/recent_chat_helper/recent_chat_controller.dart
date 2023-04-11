@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:flameloop/app/models/community_model/community_model.dart';
 import 'package:get/get.dart';
 import 'package:pull_to_refresh/pull_to_refresh.dart';
 
@@ -17,11 +18,14 @@ class RecentChatController extends GetxController {
   RxList<UserModel> users = <UserModel>[].obs;
   final myUserId = UserStore.to.uid;
   var isLoading = true.obs;
+  var loadingCommunity = true.obs;
 
   final RefreshController refreshController2 = RefreshController(initialRefresh: true);
 
   @override
   Future<void> onInit() async {
+    // await addCommunity();
+    await getAllCommunity();
     await asyncLoadData();
     super.onInit();
   }
@@ -30,57 +34,39 @@ class RecentChatController extends GetxController {
     loadUsers().then(
         (_) => refreshController2.refreshCompleted(resetFooterState: true));
   }
-
-  // @override
-  // Future<void> onReady() async {
-  //   super.onReady();
-  //   state.otherUser.value = [];
-  //   state.chatRoomList.value = [];
-  //   var chatRoomList = FirebaseFireStore.to.getChatRoom();
-  //   chatRoomList.listen((snapshot) async {
-  //     isLoading.value = true;
-  //     log('Loading');
-  //     for (var chatRoom in snapshot.docChanges) {
-  //       switch (chatRoom.type) {
-  //         case DocumentChangeType.added:
-  //           if (chatRoom.doc.data() != null) {
-  //             Map<String, dynamic> chatRoomData = chatRoom.doc.data() as Map<String, dynamic>;
-  //             state.chatRoomList.add(
-  //                 ChatRoomModel.fromJson(chatRoomData)
-  //             );
-  //             if(chatRoomData['users'][0] == myUserId){
-  //               state.otherUser.add(
-  //                   (await FirebaseFireStore.to.getUser(chatRoomData['users'][1]))!
-  //               );
-  //             }else{
-  //               state.otherUser.add(
-  //                   (await FirebaseFireStore.to.getUser(chatRoomData['users'][0]))!
-  //               );
-  //             }
-  //           }
-  //           break;
-  //         case DocumentChangeType.modified:
-  //           if (chatRoom.doc.data() != null) {
-  //             log('This is the change: ${chatRoom.doc.data()}');
-  //             Map<String, dynamic> chatRoomData = chatRoom.doc.data() as Map<String, dynamic>;
-  //             int changeIndex = state.chatRoomList.indexWhere((element) => element.chatRoomId == chatRoomData['chatRoomId']);
-  //             state.chatRoomList[changeIndex] = state.chatRoomList[changeIndex].copyWith(
-  //               lastMessage: chatRoomData['lastMessage'],
-  //               lastMessageBy: chatRoomData['lastMessageBy'],
-  //               lastMessageTm: DateTime.parse(chatRoomData['lastMessageTm']),
-  //             );
-  //             print('This is update: ${state.chatRoomList}');
-  //           }
-  //           break;
-  //         case DocumentChangeType.removed:
-  //           break;
-  //       }
-  //     }
-  //     isLoading.value = false;
-  //     log('Loading completed');
-  //   }, onError: (error) => log("Listening failed: $error"));
-  //   isLoading.value = false;
-  //   await loadUsers();
+  //
+  // addCommunity() async {
+  //   FirebaseFireStore.to.createCommunity(
+  //     CommunityModel(
+  //       participantsList: const [
+  //         ParticipantModel(
+  //           uid: 'uid',
+  //           username: 'Ayan Choudhary',
+  //           userProfile: 'userProfile',
+  //           userRole: 'Admin',
+  //         ),
+  //         ParticipantModel(
+  //           uid: 'uid',
+  //           username: 'Naman',
+  //           userProfile: 'userProfile',
+  //           userRole: 'Admin',
+  //         ),
+  //         ParticipantModel(
+  //           uid: 'uid',
+  //           username: 'Anuroop',
+  //           userProfile: 'userProfile',
+  //           userRole: 'Participant',
+  //         )
+  //       ],
+  //       lastMessage: 'lastMessage',
+  //       lastMessageBy: 'lastMessageBy',
+  //       lastMessageTm: DateTime.now(),
+  //       communityId: 'communityId',
+  //       communityIcon: 'communityIcon',
+  //       communityName: 'communityName',
+  //       communityDescription: 'communityDescription',
+  //     )
+  //   );
   // }
 
   loadUsers() async {
@@ -146,6 +132,18 @@ class RecentChatController extends GetxController {
       isLoading.value = false;
       log('Loading completed');
     }, onError: (error) => log("Listening failed: $error"));
+  }
+
+  getAllCommunity() async {
+    var communityData = FirebaseFireStore.to.getAllCommunity();
+    communityData.listen((snapshot) {
+      loadingCommunity.value = true;
+      for(var community in snapshot.docs){
+        state.communityList.add(CommunityModel.fromJson(community.data() as Map<String, dynamic>));
+      }
+      loadingCommunity.value = false;
+      log('This is the community list: ${state.communityList}');
+    });
   }
 
   createChatRoom(ChatRoomModel chatRoomModel, UserModel otherUser) async {

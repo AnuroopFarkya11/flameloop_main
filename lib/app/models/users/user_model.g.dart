@@ -27,7 +27,7 @@ Map<String, dynamic> _$$_UserModelToJson(_$_UserModel instance) =>
       'photoId': instance.photoId,
       'phoneNumber': instance.phoneNumber,
       'aboutUser': instance.aboutUser,
-      'skills': instance.skills.map((e) => e.toJson()).toList(),
+      'skills': instance.skills,
       'userState': _$AuthUserStateEnumMap[instance.userState]!,
     };
 
