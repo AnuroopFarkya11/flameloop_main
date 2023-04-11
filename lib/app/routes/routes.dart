@@ -10,6 +10,7 @@ import 'package:flameloop/app/screens/user_profile_setup/select_interest_screen.
 import 'package:flameloop/app/screens/user_profile_setup/setup_profile_screen.dart';
 import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/screens/welcome_screen/splash_screen.dart';
+import 'package:flameloop/app/screens/work_screen/work_screen.dart';
 import 'package:get/get.dart';
 
 import '../screens/auth_screens/getx_helper/auth_binding.dart';
@@ -92,5 +93,12 @@ class RouteClass {
         page: () => const HomeScreen(),
 
     ),
+
+
+
+    GetPage(
+      name: RoutePaths.workScreen,
+      page: () => const WorkScreen(),
+    )
   ];
 }

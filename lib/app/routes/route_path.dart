@@ -13,6 +13,8 @@ class RoutePaths {
   static String recentChatScreen = '/recentChatScreen';
   static String availableUserScreen = '/availableUsers';
   static String homeScreen = '/HomeScreen';
+  static String workScreen = '/WorkScreen';
+
 
 
 
