@@ -15,6 +15,8 @@ import 'package:get/get.dart';
 import '../screens/auth_screens/getx_helper/auth_binding.dart';
 import '../screens/auth_screens/mobile_auth_screen.dart';
 import '../screens/chat_screens/chat_space_screen.dart';
+import '../screens/chat_screens/community_chat_space/widgets/community_chat_space.dart';
+import '../screens/chat_screens/getx_helper/community_chat_helper/community_chat_space_binding.dart';
 
 class RouteClass {
   static String getSlashScreen() => RoutePaths.splashScreen;
@@ -79,6 +81,12 @@ class RouteClass {
       name: RoutePaths.chatScreen,
       page: () => const ChatSpace(),
       binding: ChatSpaceBinding()
+    ),
+
+    GetPage(
+        name: RoutePaths.communityChatSpace,
+        page: () => const CommunityChatSpace(),
+        binding: CommunityChatSpaceBinding()
     ),
 
     GetPage(

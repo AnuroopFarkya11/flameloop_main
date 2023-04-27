@@ -18,6 +18,6 @@ Map<String, dynamic> _$$_CommunityChatModelToJson(
         _$_CommunityChatModel instance) =>
     <String, dynamic>{
       'message': instance.message,
-      'sendBy': instance.sendBy,
+      'sendBy': instance.sendBy.toJson(),
       'messageTm': instance.messageTm.toIso8601String(),
     };

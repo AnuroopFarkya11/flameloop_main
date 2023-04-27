@@ -142,10 +142,28 @@ class FirebaseFireStore extends GetxController {
         .set(messageContent);
   }
 
+  Future<void> sendCommunityMessage(
+      Map<String, dynamic> messageContent, String chatRoomId) async {
+    return await fireStore
+        .collection('community')
+        .doc(chatRoomId)
+        .collection("communityChats")
+        .doc()
+        .set(messageContent);
+  }
+
   Future<void> updateMessage(
       Map<String, dynamic> lastMessage, String chatRoomId) async {
     return await fireStore
         .collection('chats')
+        .doc(chatRoomId)
+        .update(lastMessage);
+  }
+
+  Future<void> updateCommunityMessage(
+      Map<String, dynamic> lastMessage, String chatRoomId) async {
+    return await fireStore
+        .collection('community')
         .doc(chatRoomId)
         .update(lastMessage);
   }
@@ -201,5 +219,14 @@ class FirebaseFireStore extends GetxController {
           .doc(docId)
           .set(community.copyWith(communityId: docId).toJson());
     }
+  }
+
+  readCommunityMessage(String docId) {
+    return fireStore
+        .collection("community")
+        .doc(docId)
+        .collection("communityChats")
+        .orderBy("messageTm", descending: false)
+        .snapshots();
   }
 }

@@ -35,29 +35,43 @@ class RecentChatScreen extends GetView<RecentChatController> {
                 100.h,
               ),
               child: Obx(
-                () => !controller.loadingCommunity.value ?
-                Container(
-                  height: 100.h,
-                  padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: Row(
+                () => !controller.loadingCommunity.value
+                    ? Container(
+                        height: 100.h,
+                        padding: EdgeInsets.symmetric(horizontal: 10.w),
+                        child: Row(
                           children: [
                             Expanded(
                               child: ListView.builder(
                                 scrollDirection: Axis.horizontal,
-                                itemCount: controller.state.communityList.length,
+                                itemCount:
+                                    controller.state.communityList.length,
                                 itemBuilder: (context, index) {
-                                  return ThoughtBubble(
-                                      community: controller.state.communityList[index]);
+                                  return GestureDetector(
+                                    onTap: () {
+                                      Get.toNamed(RoutePaths.communityChatSpace,
+                                          arguments: {
+                                            "communityId": controller.state.communityList[index].communityId,
+                                            "communityProfile": controller.state.communityList[index].communityIcon,
+                                            "participantsList": controller.state.communityList[index].participantsList,
+                                            "communityName": controller.state.communityList[index].communityName,
+                                          });
+                                    },
+                                    child: ThoughtBubble(
+                                      community:
+                                          controller.state.communityList[index],
+                                    ),
+                                  );
                                 },
                               ),
                             )
                           ],
-                        )
-                ) : Container(
-                  alignment: Alignment.center,
-                  margin: EdgeInsets.only(bottom: 50.w),
-                  child: const CircularProgressIndicator(),
-                ),
+                        ))
+                    : Container(
+                        alignment: Alignment.center,
+                        margin: EdgeInsets.only(bottom: 50.w),
+                        child: const CircularProgressIndicator(),
+                      ),
               ),
             ),
             actions: [
@@ -131,11 +145,12 @@ class RecentChatScreen extends GetView<RecentChatController> {
                                   itemCount: controller.state.chatRoomList.length,
                                   shrinkWrap: true,
                                   physics: const BouncingScrollPhysics(),
-                                  itemBuilder: (BuildContext context, int index) {
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
                                     if (controller.state.chatRoomList.isNotEmpty && controller.state.otherUser.isNotEmpty) {
                                       var item = controller.state.chatRoomList[index];
                                       var otherUser = controller.state.otherUser[index];
-                                      return ChatUser( item: item, otherUser: otherUser);
+                                      return ChatUser(item: item, otherUser: otherUser);
                                     } else {
                                       return const CircularProgressIndicator();
                                     }
@@ -160,7 +175,7 @@ class RecentChatScreen extends GetView<RecentChatController> {
                                     ),
                                   ],
                                 ),
-                            ),
+                              ),
                   ],
                 ),
               ),
