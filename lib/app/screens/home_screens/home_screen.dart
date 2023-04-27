@@ -16,13 +16,13 @@ class HomeScreen extends GetView {
           style: GoogleFonts.poppins(),
         ),
         actions: [
-          Padding(
-            //TODO WHATSAPP ICON
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            /// TODO WHATSAPP ICON
+            padding: EdgeInsets.all(8.0),
             child: Icon(Icons.whatshot),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
             child: Icon(Icons.search_rounded),
           ),
           Padding(
@@ -31,30 +31,32 @@ class HomeScreen extends GetView {
               onPressed: () {
                 Get.toNamed(RoutePaths.messageScreen);
               },
-              icon: Icon(Icons.messenger_outline_rounded),
+              icon: const Icon(Icons.messenger_outline_rounded),
             ),
           ),
         ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {},
-        child: Icon(Icons.add),
         backgroundColor: Theme.of(context).colorScheme.primary,
+        child: const Icon(Icons.add),
       ),
       bottomNavigationBar: BottomNavigationBar(
-          items: [
-            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home",),
+          items: const [
             BottomNavigationBarItem(
-                icon: Icon(Icons.connect_without_contact_outlined),
-                label: "Network",
+              icon: Icon(Icons.home),
+              label: "Home",
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.connect_without_contact_outlined),
+              label: "Network",
             ),
             BottomNavigationBarItem(icon: Icon(Icons.work), label: "Work"),
-
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications_active_rounded),
-                label: "Nostification"),
+              icon: Icon(Icons.notifications_active_rounded),
+              label: "Notification",
+            ),
             BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile"),
-
           ],
           iconSize: 20.0,
           selectedItemColor: Colors.indigo,

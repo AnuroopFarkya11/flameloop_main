@@ -142,7 +142,8 @@ class FirebaseFireStore extends GetxController {
         .set(messageContent);
   }
 
-  Future<void> updateMessage(Map<String, dynamic> lastMessage, String chatRoomId) async {
+  Future<void> updateMessage(
+      Map<String, dynamic> lastMessage, String chatRoomId) async {
     return await fireStore
         .collection('chats')
         .doc(chatRoomId)
@@ -159,7 +160,7 @@ class FirebaseFireStore extends GetxController {
   }
 
   Stream<QuerySnapshot> getChatRoom() {
-    return  fireStore
+    return fireStore
         .collection("chats")
         .where("users", arrayContains: UserStore.to.uid)
         .where("lastMessage", isNotEqualTo: '')
@@ -169,7 +170,8 @@ class FirebaseFireStore extends GetxController {
   }
 
   Future<void> createChatRoom(ChatRoomModel chatRoom) async {
-    final doc = await fireStore.collection("chats").doc(chatRoom.chatRoomId).get();
+    final doc =
+        await fireStore.collection("chats").doc(chatRoom.chatRoomId).get();
     if (!doc.exists) {
       await fireStore
           .collection("chats")
@@ -179,7 +181,7 @@ class FirebaseFireStore extends GetxController {
   }
 
   Stream<QuerySnapshot> getAllCommunity() {
-    return  fireStore
+    return fireStore
         .collection("community")
         .where("lastMessage", isNotEqualTo: '')
         .orderBy("lastMessage", descending: false)
@@ -188,7 +190,10 @@ class FirebaseFireStore extends GetxController {
   }
 
   Future<void> createCommunity(CommunityModel community) async {
-    final doc = await fireStore.collection("community").doc(community.communityId).get();
+    final doc = await fireStore
+        .collection("community")
+        .doc(community.communityId)
+        .get();
     if (!doc.exists) {
       String docId = fireStore.collection("community").doc().id;
       await fireStore
@@ -197,5 +202,4 @@ class FirebaseFireStore extends GetxController {
           .set(community.copyWith(communityId: docId).toJson());
     }
   }
-
 }

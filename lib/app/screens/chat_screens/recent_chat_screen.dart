@@ -35,35 +35,40 @@ class RecentChatScreen extends GetView<RecentChatController> {
                 100.h,
               ),
               child: Obx(
-                () => Container(
+                () => !controller.loadingCommunity.value ?
+                Container(
                   height: 100.h,
                   padding: EdgeInsets.symmetric(horizontal: 10.w),
-                  child: !controller.loadingCommunity.value ?
-                  Row(
-                    children: [
-                      Expanded(
-                        child: ListView.builder(
-                          scrollDirection: Axis.horizontal,
-                          itemCount: controller.state.communityList.length,
-                          itemBuilder: (context, index) {
-                            return ThoughtBubble(community: controller.state.communityList[index]);
-                          },
-                        ),
-                      )
-                    ],
-                  ): const CircularProgressIndicator(),
+                  child: Row(
+                          children: [
+                            Expanded(
+                              child: ListView.builder(
+                                scrollDirection: Axis.horizontal,
+                                itemCount: controller.state.communityList.length,
+                                itemBuilder: (context, index) {
+                                  return ThoughtBubble(
+                                      community: controller.state.communityList[index]);
+                                },
+                              ),
+                            )
+                          ],
+                        )
+                ) : Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(bottom: 50.w),
+                  child: const CircularProgressIndicator(),
                 ),
               ),
             ),
             actions: [
               IconButton(
-                  onPressed: () {
-                    Get.toNamed(RoutePaths.availableUserScreen);
-                  },
-                  icon: Icon(
-                    Icons.search,
-                    color: Theme.of(context).colorScheme.primary,
-                  ),
+                onPressed: () {
+                  Get.toNamed(RoutePaths.availableUserScreen);
+                },
+                icon: Icon(
+                  Icons.search,
+                  color: Theme.of(context).colorScheme.primary,
+                ),
               )
             ],
           ),
@@ -123,19 +128,18 @@ class RecentChatScreen extends GetView<RecentChatController> {
                         : controller.state.chatRoomList.isNotEmpty
                             ? Obx(
                                 () => ListView.builder(
-                                    itemCount: controller.state.chatRoomList.length,
-                                    shrinkWrap: true,
-                                    physics: const BouncingScrollPhysics(),
-                                    itemBuilder: (BuildContext context, int index) {
-                                      if (controller.state.chatRoomList.isNotEmpty && controller.state.otherUser.isNotEmpty) {
-                                        var item = controller.state.chatRoomList[index];
-                                        var otherUser = controller.state.otherUser[index];
-                                        return ChatUser(
-                                            item: item, otherUser: otherUser);
-                                      } else {
-                                        return const CircularProgressIndicator();
-                                      }
-                                    },
+                                  itemCount: controller.state.chatRoomList.length,
+                                  shrinkWrap: true,
+                                  physics: const BouncingScrollPhysics(),
+                                  itemBuilder: (BuildContext context, int index) {
+                                    if (controller.state.chatRoomList.isNotEmpty && controller.state.otherUser.isNotEmpty) {
+                                      var item = controller.state.chatRoomList[index];
+                                      var otherUser = controller.state.otherUser[index];
+                                      return ChatUser( item: item, otherUser: otherUser);
+                                    } else {
+                                      return const CircularProgressIndicator();
+                                    }
+                                  },
                                 ),
                               )
                             : Container(
@@ -153,10 +157,10 @@ class RecentChatScreen extends GetView<RecentChatController> {
                                         color: Colors.white,
                                         fontSize: 18.sp,
                                       ),
-                                    )
+                                    ),
                                   ],
                                 ),
-                              ),
+                            ),
                   ],
                 ),
               ),
