@@ -16,12 +16,13 @@ class WorkScreen extends StatelessWidget {
         ),
       ),
       body: Container(
+        //BACKGROUND
         color: Colors.black12,
         child: Column(
           children: [
             //    FOR YOU + FILTER BUTTON
             Container(
-              height: 50,
+              padding: EdgeInsets.symmetric(vertical: 15),
               margin: EdgeInsets.symmetric(horizontal: 16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -59,18 +60,18 @@ class WorkScreen extends StatelessWidget {
               ),
             ),
 
-            SizedBox(
-              height: size.height-200,
-              child: ListView.builder(shrinkWrap: true,itemCount: 4,itemBuilder: (context,index){
+            Expanded(
+
+              child: ListView.builder(itemCount: 4,itemBuilder: (context,index){
                 return Container(
                     margin: EdgeInsets.symmetric(horizontal: 10,vertical: 10),
-                    // padding: EdgeInsets.all(5),
+                    padding: EdgeInsets.all(5),
 
-                    constraints: BoxConstraints(
-                      // maxHeight: size.height * 0.2,
-                        minHeight: size.height * 0.15,
-                        maxWidth: size.width,
-                        minWidth: size.width),
+                    // constraints: BoxConstraints(
+                    //   maxHeight: size.height * 0.25,
+                    //     // minHeight: size.height * 0.15,
+                    //     maxWidth: size.width,
+                    //     minWidth: size.width),
                     decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(12.0)),
@@ -79,22 +80,24 @@ class WorkScreen extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             //  Listtile + lastseen
-                            Flexible(
+                            Expanded(
                               // width: size.width * 0.5,
                                 child: ListTile(
                                   dense: true,
                                   // visualDensity: VisualDensity(horizontal: -4),
                                   title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
                                     children: [
                                       CircleAvatar(
                                         backgroundImage: AssetImage(
                                             'assets/setupprofilescreen/avatar.png'),
-                                        radius: 12,
+                                        radius: 15,
                                       ),
                                       SizedBox(
-                                        width: 2,
+                                        width: 5,
                                       ),
                                       Column(
                                         crossAxisAlignment: CrossAxisAlignment.start,
@@ -118,7 +121,7 @@ class WorkScreen extends StatelessWidget {
                             Row(
                               children: [
                                 Container(
-                                  constraints: BoxConstraints(maxHeight: 30),
+                                  // constraints: BoxConstraints(maxHeight: 30),
                                   padding: EdgeInsets.symmetric(
                                       horizontal: 10, vertical: 3),
                                   margin: EdgeInsets.all(5),
@@ -215,6 +218,9 @@ class WorkScreen extends StatelessWidget {
           ],
         ),
       ),
+
+      floatingActionButton: FloatingActionButton(onPressed: (){},child: Icon(Icons.add),),
+
     );
   }
 }

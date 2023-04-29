@@ -72,7 +72,7 @@ class RouteClass {
 
     GetPage(
       name: RoutePaths.recentChatScreen,
-      page: () => const RecentChatScreen(),
+      page: () => RecentChatScreen(),
       binding: ChatRoomBinding()
     ),
 
