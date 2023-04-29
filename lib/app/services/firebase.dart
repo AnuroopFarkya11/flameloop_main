@@ -201,24 +201,30 @@ class FirebaseFireStore extends GetxController {
   Stream<QuerySnapshot> getAllCommunity() {
     return fireStore
         .collection("community")
-        .where("lastMessage", isNotEqualTo: '')
-        .orderBy("lastMessage", descending: false)
+        .where('participantsList', arrayContainsAny: [
+          ParticipantModel(
+            uid: UserStore.to.uid,
+            username: UserStore.to.profile.username,
+            userProfile: UserStore.to.profile.photoId,
+            userRole: 'ADMIN',
+          ).toJson(),
+          ParticipantModel(
+            uid: UserStore.to.uid,
+            username: UserStore.to.profile.username,
+            userProfile: UserStore.to.profile.photoId,
+            userRole: 'Participant',
+          ).toJson()
+        ])
         .orderBy("lastMessageTm", descending: true)
         .snapshots();
   }
 
   Future<void> createCommunity(CommunityModel community) async {
-    final doc = await fireStore
+    String docId = fireStore.collection("community").doc().id;
+    await fireStore
         .collection("community")
-        .doc(community.communityId)
-        .get();
-    if (!doc.exists) {
-      String docId = fireStore.collection("community").doc().id;
-      await fireStore
-          .collection("community")
-          .doc(docId)
-          .set(community.copyWith(communityId: docId).toJson());
-    }
+        .doc(docId)
+        .set(community.copyWith(communityId: docId).toJson());
   }
 
   readCommunityMessage(String docId) {

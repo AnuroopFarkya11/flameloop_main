@@ -66,42 +66,44 @@ class MobileAuthScreen extends GetView<AuthController> {
             Padding(
               padding: EdgeInsets.symmetric(vertical: 10.w),
               child: ElevatedButton(
-                  onPressed: () async {
-                    if (controller.validate()) {
-                      await controller.handleSignInByPhone();
-                      Get.toNamed(RoutePaths.otpVerificationScreen);
-                    } else {
-                      Get.snackbar(
-                        "Mobile Auth",
-                        "Please Enter a valid phone number",
-                        snackStyle: SnackStyle.FLOATING,
-                        icon: const Icon(
-                          Icons.person,
-                          color: Color(0xff28282B),
-                        ),
-                        snackPosition: SnackPosition.BOTTOM,
-                        dismissDirection: DismissDirection.horizontal,
-                        backgroundColor: Colors.grey[200],
-                        borderRadius: 10.r,
-                        margin: EdgeInsets.all(10.w),
-                        padding: EdgeInsets.all(15.w),
-                        colorText: const Color(0xff28282B),
-                        duration: const Duration(seconds: 4),
-                        isDismissible: true,
-                        forwardAnimationCurve: Curves.easeOutBack,
-                      );
-                    }
-                  },
-                  child: Container(
-                    padding: EdgeInsets.symmetric(vertical: 15.w),
-                    child: Text(
-                      "Get OTP",
-                      style: GoogleFonts.poppins(
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500,
-                          fontSize: 18.sp),
+                onPressed: () async {
+                  if (controller.validate()) {
+                    await controller.handleSignInByPhone();
+                    Get.toNamed(RoutePaths.otpVerificationScreen);
+                  } else {
+                    Get.snackbar(
+                      "Mobile Auth",
+                      "Please Enter a valid phone number",
+                      snackStyle: SnackStyle.FLOATING,
+                      icon: const Icon(
+                        Icons.person,
+                        color: Color(0xff28282B),
+                      ),
+                      snackPosition: SnackPosition.BOTTOM,
+                      dismissDirection: DismissDirection.horizontal,
+                      backgroundColor: Colors.grey[200],
+                      borderRadius: 10.r,
+                      margin: EdgeInsets.all(10.w),
+                      padding: EdgeInsets.all(15.w),
+                      colorText: const Color(0xff28282B),
+                      duration: const Duration(seconds: 4),
+                      isDismissible: true,
+                      forwardAnimationCurve: Curves.easeOutBack,
+                    );
+                  }
+                },
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 15.w),
+                  child: Text(
+                    "Get OTP",
+                    style: GoogleFonts.poppins(
+                      color: Colors.black,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 18.sp,
                     ),
-                  )),
+                  ),
+                ),
+              ),
             ),
 
             // Content Line

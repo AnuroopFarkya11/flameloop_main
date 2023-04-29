@@ -63,8 +63,7 @@ class SelectInterest extends GetView<SetProfileController> {
                 runSpacing: 19,
                 spacing: 19,
                 alignment: WrapAlignment.center,
-                children:
-                    List.generate(controller.interestList.length, (index) {
+                children: List.generate(controller.interestList.length, (index) {
                   return InterestTile(index: index);
                 }),
               )

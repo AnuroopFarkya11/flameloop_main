@@ -24,9 +24,8 @@ class RecentChatController extends GetxController {
 
   @override
   Future<void> onInit() async {
-    // await addCommunity();
-    await getAllCommunity();
-    await asyncLoadData();
+    getAllCommunity();
+    asyncLoadData();
     super.onInit();
   }
 
@@ -34,40 +33,6 @@ class RecentChatController extends GetxController {
     loadUsers().then(
         (_) => refreshController2.refreshCompleted(resetFooterState: true));
   }
-  //
-  // addCommunity() async {
-  //   FirebaseFireStore.to.createCommunity(
-  //     CommunityModel(
-  //       participantsList: const [
-  //         ParticipantModel(
-  //           uid: 'uid',
-  //           username: 'Ayan Choudhary',
-  //           userProfile: 'userProfile',
-  //           userRole: 'Admin',
-  //         ),
-  //         ParticipantModel(
-  //           uid: 'uid',
-  //           username: 'Naman',
-  //           userProfile: 'userProfile',
-  //           userRole: 'Admin',
-  //         ),
-  //         ParticipantModel(
-  //           uid: 'uid',
-  //           username: 'Anuroop',
-  //           userProfile: 'userProfile',
-  //           userRole: 'Participant',
-  //         )
-  //       ],
-  //       lastMessage: 'lastMessage',
-  //       lastMessageBy: 'lastMessageBy',
-  //       lastMessageTm: DateTime.now(),
-  //       communityId: 'communityId',
-  //       communityIcon: 'communityIcon',
-  //       communityName: 'communityName',
-  //       communityDescription: 'communityDescription',
-  //     )
-  //   );
-  // }
 
   loadUsers() async {
     isLoading.value = true;
@@ -122,7 +87,7 @@ class RecentChatController extends GetxController {
                 lastMessageBy: chatRoomData['lastMessageBy'],
                 lastMessageTm: DateTime.parse(chatRoomData['lastMessageTm']),
               );
-              print('This is update: ${state.chatRoomList}');
+              log('This is update: ${state.chatRoomList}');
             }
             break;
           case DocumentChangeType.removed:
@@ -135,12 +100,32 @@ class RecentChatController extends GetxController {
   }
 
   getAllCommunity() async {
+    state.communityList.clear();
     var communityData = FirebaseFireStore.to.getAllCommunity();
     communityData.listen((snapshot) {
       loadingCommunity.value = true;
-      state.communityList.clear();
-      for(var community in snapshot.docs){
-        state.communityList.add(CommunityModel.fromJson(community.data() as Map<String, dynamic>));
+      for(var community in snapshot.docChanges){
+        switch(community.type){
+          case DocumentChangeType.added:
+            state.communityList.add(CommunityModel.fromJson(community.doc.data() as Map<String, dynamic>));
+            break;
+          case DocumentChangeType.removed:
+            state.communityList.remove(CommunityModel.fromJson(community.doc.data() as Map<String, dynamic>));
+            break;
+          case DocumentChangeType.modified:
+            if (community.doc.data() != null) {
+              log('This is the change: ${community.doc.data()}');
+              Map<String, dynamic> communityData = community.doc.data() as Map<String, dynamic>;
+              int changeIndex = state.communityList.indexWhere((element) => element.communityId == communityData['communityId']);
+              state.communityList[changeIndex] = state.communityList[changeIndex].copyWith(
+                lastMessage: communityData['lastMessage'],
+                lastMessageBy: communityData['lastMessageBy'],
+                lastMessageTm: DateTime.parse(communityData['lastMessageTm']),
+              );
+              log('This is update: ${state.communityList}');
+            }
+            break;
+        }
       }
       loadingCommunity.value = false;
       log('This is the community list: ${state.communityList}');

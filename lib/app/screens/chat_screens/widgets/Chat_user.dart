@@ -42,6 +42,7 @@ class ChatUser extends GetView<RecentChatController> {
         },
         child: ListTile(
           leading: CircleAvatar(
+            radius: 20.r,
             child: otherUser.photoId != ''
                 ? CachedNetworkImage(
                     imageUrl: otherUser.photoId,

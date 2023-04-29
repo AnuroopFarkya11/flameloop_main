@@ -11,12 +11,14 @@ class ThoughtBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    return Container(
       width: 100.w,
       height: 100.h,
+      margin: EdgeInsets.symmetric(horizontal: 5.w),
       child: Column(
         children: [
           CircleAvatar(
+            radius: 34.r,
             child: community.communityIcon != ''
                 ? CachedNetworkImage(
                     imageUrl: community.communityIcon,
@@ -47,20 +49,20 @@ class ThoughtBubble extends StatelessWidget {
                   ),
           ),
           SizedBox(
-            height: 10.h,
+            height: 2.h,
           ),
           Container(
             constraints: BoxConstraints(minWidth: 20.w, maxWidth: 100.h),
             decoration: BoxDecoration(
               color: Colors.blue,
               borderRadius: BorderRadius.all(
-                Radius.circular(12.r),
+                Radius.circular(10.r),
               ),
             ),
             child: Padding(
               padding: EdgeInsets.all(8.r),
               child: Text(
-                community.communityDescription,
+                community.communityName,
                 overflow: TextOverflow.ellipsis,
               ),
             ),
