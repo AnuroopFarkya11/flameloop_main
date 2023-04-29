@@ -1,6 +1,6 @@
 import 'package:flameloop/app/screens/chat_screens/getx_helper/recent_chat_helper/recent_chat_controller.dart';
 import 'package:flameloop/app/screens/chat_screens/widgets/Chat_user.dart';
-import 'package:flameloop/app/screens/chat_screens/widgets/CommunityWidgets/create_community.dart';
+// import 'package:flameloop/app/screens/chat_screens/widgets/CommunityWidgets/create_community.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -9,6 +9,7 @@ import 'package:lottie/lottie.dart';
 
 import '../../routes/route_path.dart';
 import '../../widgets/Thought_bubble.dart';
+import '../CommunityWidgets/create_community.dart';
 
 class RecentChatScreen extends GetView<RecentChatController> {
   RecentChatScreen({Key? key}) : super(key: key);
