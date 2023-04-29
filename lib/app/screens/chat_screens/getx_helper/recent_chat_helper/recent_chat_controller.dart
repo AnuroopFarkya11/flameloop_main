@@ -138,6 +138,7 @@ class RecentChatController extends GetxController {
     var communityData = FirebaseFireStore.to.getAllCommunity();
     communityData.listen((snapshot) {
       loadingCommunity.value = true;
+      state.communityList.clear();
       for(var community in snapshot.docs){
         state.communityList.add(CommunityModel.fromJson(community.data() as Map<String, dynamic>));
       }
