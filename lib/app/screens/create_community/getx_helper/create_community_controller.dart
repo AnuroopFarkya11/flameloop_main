@@ -61,7 +61,7 @@ class CreateCommunityController extends GetxController {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  selectGalleryImage();
+                  selectGalleryImage(context);
                 },
                 child: const Text(
                   "Gallery",
@@ -70,7 +70,7 @@ class CreateCommunityController extends GetxController {
               ),
               ElevatedButton(
                 onPressed: () {
-                  selectCameraImage();
+                  selectCameraImage(context);
                 },
                 child: const Text(
                   "Camera",
@@ -84,7 +84,7 @@ class CreateCommunityController extends GetxController {
     );
   }
 
-  void selectCameraImage() async {
+  void selectCameraImage(context) async {
     XFile? file = await ImagePicker().pickImage(source: ImageSource.camera);
     if (file != null) {
       log("Selected");
@@ -95,13 +95,14 @@ class CreateCommunityController extends GetxController {
       if (croppedImage != null) {
         imageCache.clear();
         communityLogo.value = croppedImage.path;
+        Navigator.pop(context);
       }
     } else {
       log("FAIL TO SELECT IMAGEE");
     }
   }
 
-  void selectGalleryImage() async {
+  void selectGalleryImage(context) async {
     XFile? file = await ImagePicker().pickImage(source: ImageSource.gallery);
 
     if (file != null) {
@@ -113,6 +114,7 @@ class CreateCommunityController extends GetxController {
       if (croppedImage != null) {
         imageCache.clear();
         communityLogo.value = croppedImage.path;
+        Navigator.pop(context);
       }
     } else {
       log("FAIL TO SELECT IMAGEE");
