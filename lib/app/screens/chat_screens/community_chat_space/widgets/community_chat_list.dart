@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../services/user.dart';
-import '../getx_helper/community_chat_helper/community_chat_space_controller.dart';
-import 'widgets/community_left_chat.dart';
+import '../../../../services/user.dart';
+import '../../getx_helper/community_chat_helper/community_chat_space_controller.dart';
+import 'community_left_chat.dart';
 
 // ignore: must_be_immutable
 class CommunityChatList extends GetView<CommunityChatSpaceController> {

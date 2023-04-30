@@ -9,4 +9,5 @@ class CommunityChatSpaceState{
   var communityId = ''.obs;
   var participants = <ParticipantModel>[].obs;
   var communityProfile = ''.obs;
+  var communityDescription = ''.obs;
 }
