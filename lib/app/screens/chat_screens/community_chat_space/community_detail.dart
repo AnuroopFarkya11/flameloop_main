@@ -13,7 +13,7 @@ import '../getx_helper/community_chat_helper/community_chat_space_controller.dar
 class CommunityDetails extends GetView<CommunityChatSpaceController> {
   CommunityDetails({Key? key}) : super(key: key);
 
-
+// TODO EXIT & DELETE COMMUNITY
 
 
 
@@ -23,22 +23,23 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
 
   Size size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        iconTheme: IconThemeData(color: Colors.black),
+        iconTheme: IconThemeData(color: Colors.white),
         // leading: Icon(Icons.arrow_back),
         centerTitle: true,
         title: Text(
           "Community Info",
-          style: GoogleFonts.poppins(color: Colors.black, fontSize: 16.sp),
+          style: GoogleFonts.poppins(color: Colors.white, fontSize: 16.sp),
         ),
         actions: [
           TextButton(
               onPressed: () {},
               child: Text(
                 "Edit",
-                style: GoogleFonts.poppins(),
+                style: GoogleFonts.poppins(color: Colors.white),
               )
           )
         ],
@@ -46,7 +47,7 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
       body: SingleChildScrollView(
         child: Container(
           // height: size.height,
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.primary,
           padding: EdgeInsets.all(10.w),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -106,7 +107,7 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
                     controller.state.communityName.string==""?"Community Name":controller.state.communityName.string,
                     textAlign: TextAlign.center,
                     style: GoogleFonts.poppins(
-                        fontSize: 22.sp, fontWeight: FontWeight.w700),
+                        fontSize: 22.sp, fontWeight: FontWeight.w700,color: Colors.white),
                   ),
 
               ),
@@ -125,13 +126,13 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
                   // maxHeight: size.width*0.5
                 ),
                 decoration: BoxDecoration(
-                    color: Colors.black12,
+                    color: Colors.white30,
                     borderRadius: BorderRadius.circular(15)
                 ),
                 // todo if description is empty
                 child: Text(
                   controller.state.communityDescription.string==""?"Add Description":controller.state.communityDescription.string,
-                  style: GoogleFonts.poppins(),
+                  style: GoogleFonts.poppins(fontSize: 14.sp),
                 ),
               ),
 
@@ -147,16 +148,16 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
                       child: Text(
                         "${controller.state.participants.length} Participants",
                         style: GoogleFonts.poppins(
-                            fontSize: 16.sp, fontWeight: FontWeight.w600),
+                            fontSize: 16.sp, fontWeight: FontWeight.w600,color: Colors.white),
                       )
                   ),
                   CircleAvatar(
-                      backgroundColor: Colors.black12,
+                      backgroundColor: Colors.white30,
                       child: IconButton(
                           onPressed: () {},
                           icon: Icon(
                             Icons.search,
-                            color: Colors.black,
+                            color: Colors.white,
                           )
                       )
                   )
@@ -174,7 +175,7 @@ class CommunityDetails extends GetView<CommunityChatSpaceController> {
 
                 // padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
-                    color: Colors.black12,
+                    color: Colors.white30,
                     borderRadius: BorderRadius.circular(15)
                 ),
                 child: ListView.builder(

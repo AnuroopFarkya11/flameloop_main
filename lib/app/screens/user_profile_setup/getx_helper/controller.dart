@@ -77,9 +77,11 @@ class SetProfileController extends GetxController {
 
   updateUserProfile() async {
     log('user data: $userModel');
-    await FirebaseFireStore.to.updateUserData(
+    bool response = await FirebaseFireStore.to.updateUserData(
       userModel.copyWith(
           skills: skillsSelected, userState: AuthUserState.existingUser),
-    );
+    ).then((value){
+      return true;
+    });
   }
 }

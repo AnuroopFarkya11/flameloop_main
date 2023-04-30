@@ -33,7 +33,7 @@ class RecentChatScreen extends GetView<RecentChatController> {
             bottom: PreferredSize(
               preferredSize: Size(
                 MediaQuery.of(context).size.width,
-                100.h,
+                110.h,
               ),
               child: Obx(
                 () => !controller.loadingCommunity.value
