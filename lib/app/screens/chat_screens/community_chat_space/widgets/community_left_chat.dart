@@ -56,16 +56,31 @@ Widget communityChatLeftItem(CommunityChatModel item, bool isSameUser){
                     )
                   ]
               ),
-              child: Text(
-                item.message,
-                textAlign: TextAlign.start,
-                maxLines: 10,
-                style: GoogleFonts.poppins(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 13.sp,
-                    color: Colors.white
-                ),
-                overflow: TextOverflow.ellipsis,
+              child: Column(
+                children: [
+                  Text(
+                    item.sendBy.username,
+                    textAlign: TextAlign.start,
+                    maxLines: 1,
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13.sp,
+                        color: Colors.white
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                  Text(
+                    item.message,
+                    textAlign: TextAlign.start,
+                    maxLines: 10,
+                    style: GoogleFonts.poppins(
+                        fontWeight: FontWeight.w400,
+                        fontSize: 13.sp,
+                        color: Colors.white
+                    ),
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ],
               ),
             ),
             Positioned(

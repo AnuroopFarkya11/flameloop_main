@@ -68,17 +68,6 @@ Widget chatLeftItem(ChatSpaceModel item, bool isSameUser){
                 overflow: TextOverflow.ellipsis,
               ),
             ),
-            Text(
-              item.message,
-              textAlign: TextAlign.start,
-              maxLines: 10,
-              style: GoogleFonts.poppins(
-                  fontWeight: FontWeight.w400,
-                  fontSize: 13.sp,
-                  color: Colors.white
-              ),
-              overflow: TextOverflow.ellipsis,
-            ),
             Positioned(
               bottom: 6.h,
               right: 10.w,
