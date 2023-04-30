@@ -11,13 +11,16 @@ import 'package:flameloop/app/screens/user_profile_setup/setup_profile_screen.da
 import 'package:flameloop/app/screens/welcome_screen/get_started.dart';
 import 'package:flameloop/app/screens/welcome_screen/splash_screen.dart';
 import 'package:flameloop/app/screens/work_screen/work_screen.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../screens/auth_screens/getx_helper/auth_binding.dart';
 import '../screens/auth_screens/mobile_auth_screen.dart';
 import '../screens/chat_screens/chat_space_screen.dart';
 import '../screens/chat_screens/community_chat_space/community_chat_space.dart';
+import '../screens/chat_screens/community_chat_space/community_detail.dart';
 import '../screens/chat_screens/getx_helper/community_chat_helper/community_chat_space_binding.dart';
+import '../screens/chat_screens/widgets/user_detail.dart';
 
 class RouteClass {
   static String getSlashScreen() => RoutePaths.splashScreen;
@@ -36,76 +39,60 @@ class RouteClass {
 
   static String getHomeScreen() => RoutePaths.availableUserScreen;
 
-
-
   static List<GetPage> routes = [
-
     GetPage(
       name: RoutePaths.splashScreen,
       page: () => const SplashScreen(),
     ),
-
     GetPage(
       name: RoutePaths.mobileAuthScreen,
       page: () => const MobileAuthScreen(),
       binding: AuthBinding(),
     ),
-
     GetPage(
       name: RoutePaths.otpVerificationScreen,
       page: () => const OtpVerificationScreen(),
     ),
-
     GetPage(
-      name: RoutePaths.setUpProfile,
-      page: () => SetUpProfile(),
-      binding: SetProfileBinding()
-    ),
-
+        name: RoutePaths.setUpProfile,
+        page: () => SetUpProfile(),
+        binding: SetProfileBinding()),
     GetPage(
       name: RoutePaths.selectInterest,
       page: () => const SelectInterest(),
     ),
-
     GetPage(
       name: RoutePaths.getStarted,
       page: () => const GetStarted(),
     ),
-
     GetPage(
-      name: RoutePaths.recentChatScreen,
-      page: () => RecentChatScreen(),
-      binding: ChatRoomBinding()
-    ),
-
+        name: RoutePaths.recentChatScreen,
+        page: () => RecentChatScreen(),
+        binding: ChatRoomBinding()),
     GetPage(
-      name: RoutePaths.chatScreen,
-      page: () => const ChatSpace(),
-      binding: ChatSpaceBinding()
-    ),
-
+        name: RoutePaths.chatScreen,
+        page: () => const ChatSpace(),
+        binding: ChatSpaceBinding()),
     GetPage(
         name: RoutePaths.communityChatSpace,
         page: () => const CommunityChatSpace(),
-        binding: CommunityChatSpaceBinding()
-    ),
-
+        binding: CommunityChatSpaceBinding()),
     GetPage(
-      name: RoutePaths.availableUserScreen,
-      page: () => const AvailableUsers(),
-      binding: ChatRoomBinding()
-    ),
+        name: RoutePaths.availableUserScreen,
+        page: () => const AvailableUsers(),
+        binding: ChatRoomBinding()),
     GetPage(
-        name: RoutePaths.homeScreen,
-        page: () => const HomeScreen(),
-
+      name: RoutePaths.homeScreen,
+      page: () => const HomeScreen(),
     ),
-
-
-
     GetPage(
       name: RoutePaths.workScreen,
       page: () => const WorkScreen(),
-    )
+    ),
+    GetPage(
+        name: RoutePaths.communityDetailsScreen,
+        page: () => CommunityDetails()),
+    GetPage(
+        name: RoutePaths.userDetailsScreen, page: () => UserDetails())
   ];
 }

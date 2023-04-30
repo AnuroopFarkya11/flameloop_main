@@ -15,6 +15,10 @@ class RoutePaths {
   static String availableUserScreen = '/availableUsers';
   static String homeScreen = '/HomeScreen';
   static String workScreen = '/WorkScreen';
+  static String communityDetailsScreen= '/CommunityDetails';
+  static String userDetailsScreen= '/UserDetails';
+
+
   // static String homeScreen = '/HomeScreen';
 
 

@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flameloop/app/routes/route_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -17,6 +18,7 @@ class CommunityChatSpace extends GetView<CommunityChatSpaceController> {
       backgroundColor: Theme.of(context).colorScheme.primary,
       appBar: AppBar(
         automaticallyImplyLeading: false,
+
         title: ListTile(
           leading: Row(
             mainAxisSize: MainAxisSize.min,
@@ -57,9 +59,14 @@ class CommunityChatSpace extends GetView<CommunityChatSpaceController> {
               )
             ],
           ),
-          title: Text(
-            controller.state.communityName.value,
-            style: GoogleFonts.poppins(color: Colors.white),
+          title: GestureDetector(
+            onTap: (){
+              Get.toNamed(RoutePaths.communityDetailsScreen);
+            },
+            child: Text(
+              controller.state.communityName.value,
+              style: GoogleFonts.poppins(color: Colors.white),
+            ),
           ),
         ),
         actions: [

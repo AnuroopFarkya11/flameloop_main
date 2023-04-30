@@ -7,6 +7,7 @@ class ChatSpaceState {
   RxList<ChatSpaceModel> chatData = <ChatSpaceModel>[].obs;
   var toUserProfile = ''.obs;
   var toUserName = ''.obs;
+  var toUserDescription =''.obs;
   var toUserUid = ''.obs;
   var chatRoomId = ''.obs;
 

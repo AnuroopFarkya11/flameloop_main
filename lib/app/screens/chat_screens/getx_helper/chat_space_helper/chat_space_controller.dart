@@ -27,6 +27,8 @@ class ChatSpaceController extends GetxController{
     state.toUserProfile.value = chatData['toUserProfile']?? '';
     state.toUserName.value = chatData['toUserName']?? '';
     state.toUserUid.value = chatData['toUserUid']?? '';
+    state.toUserDescription.value = chatData['toUserDescription']?? '';
+
   }
 
   sendMessage() async {

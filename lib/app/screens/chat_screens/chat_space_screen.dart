@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../../routes/route_path.dart';
 import 'getx_helper/chat_space_helper/chat_space_library.dart';
 
 class ChatSpace extends GetView<ChatSpaceController> {
@@ -18,6 +19,10 @@ class ChatSpace extends GetView<ChatSpaceController> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         title: ListTile(
+          onTap: (){
+            Get.toNamed(RoutePaths.userDetailsScreen);
+
+          },
           leading: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -57,9 +62,12 @@ class ChatSpace extends GetView<ChatSpaceController> {
                     )
             ],
           ),
-          title: Text(
-            controller.state.toUserName.value,
-            style: GoogleFonts.poppins(color: Colors.white),
+          title: SizedBox(
+            width: 200.w,
+            child: Text(
+              controller.state.toUserName.value,
+              style: GoogleFonts.poppins(color: Colors.white),
+            ),
           ),
         ),
         actions: [

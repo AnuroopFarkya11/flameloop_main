@@ -54,7 +54,7 @@ class RecentChatScreen extends GetView<RecentChatController> {
                                             "communityId": controller.state.communityList[index].communityId,
                                             "communityProfile": controller.state.communityList[index].communityIcon,
                                             "participantsList": controller.state.communityList[index].participantsList,
-                                            "communityDescription": controller.state.communityList[index].participantsList,
+                                            "communityDescription": controller.state.communityList[index].communityDescription,
                                             "communityName": controller.state.communityList[index].communityName,
                                           }
                                       );

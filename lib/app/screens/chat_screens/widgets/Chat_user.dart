@@ -37,7 +37,8 @@ class ChatUser extends GetView<RecentChatController> {
             "chatRoomId": item.chatRoomId,
             "toUserProfile": otherUser.photoId,
             "toUserName": otherUser.username,
-            "toUserUid": otherUser.uid
+            "toUserUid": otherUser.uid,
+            "toUserDescription": otherUser.aboutUser
           });
         },
         child: ListTile(

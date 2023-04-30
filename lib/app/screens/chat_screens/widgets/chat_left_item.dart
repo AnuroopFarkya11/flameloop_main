@@ -69,7 +69,7 @@ Widget chatLeftItem(ChatSpaceModel item, bool isSameUser){
               ),
             ),
             Positioned(
-              bottom: 6.h,
+              bottom: 3.h,
               right: 10.w,
               child: Text(
                 '${timeFormatted(item.messageTm).hour}: ${timeFormatted(item.messageTm).minute}' ,

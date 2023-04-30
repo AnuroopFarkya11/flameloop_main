@@ -27,6 +27,9 @@ class CommunityChatSpaceController extends GetxController {
     state.communityName.value = chatData['communityName']?? '';
     state.participants.value = chatData['participantsList'] as List<ParticipantModel>;
     state.communityDescription.value = chatData['communityDescription'];
+
+
+    log(state.participants.string);
   }
 
   sendMessage() async {
